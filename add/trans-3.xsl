@@ -13,41 +13,22 @@
 		<xsl:apply-templates />
 	</xsl:template>
 	
-	<!--<xsl:template match="tei:*">
-		<xsl:element name="{name()}">
-			<xsl:apply-templates select="@* | node()" />
-		</xsl:element>
-	</xsl:template>-->
-	
-	<xsl:template match="tei:lb[preceding-sibling::*[1][self::tei:anchor] and following-sibling::*[1][self::tei:anchor]]">
-		<xsl:text> $ </xsl:text>
-	</xsl:template>
-	
-	<xsl:template match="text()">
-		<xsl:analyze-string select="." regex="&lt;.+&gt;">
-			<xsl:matching-substring>
-				<supplied><xsl:value-of select="substring(substring-before(., '&gt;'), 2)"/></supplied>
-			</xsl:matching-substring>
-			<xsl:non-matching-substring>
-				<xsl:analyze-string select="." regex="'.+?'">
-					<xsl:matching-substring>
-						<ex><xsl:value-of select="substring(substring(., 2), 1, string-length(.)-2)"/></ex>
-					</xsl:matching-substring>
-					<xsl:non-matching-substring>
-						<xsl:value-of select="."/>
-					</xsl:non-matching-substring>
-				</xsl:analyze-string>
-			</xsl:non-matching-substring>
-		</xsl:analyze-string>
-	</xsl:template>
-	
 	<xsl:template match="tei:rs">
-		<!-- TODO ref aus Register auslesen -->
-		<xsl:sequence select="."/>
-		<xsl:if test="following-sibling::node()[1][self::tei:rs]">
-			<xsl:text> </xsl:text>
-		</xsl:if>
+		<rs type="{@type}">
+			<xsl:choose>
+				<xsl:when test="following-sibling::node()[not(self::tei:rs)]">
+					<xsl:sequence select="node()[not(self::comment())]
+						| (following-sibling::tei:rs intersect
+						following-sibling::text()[1]/preceding-sibling::tei:rs)/node()[not(self::comment())]" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:sequence select="node()[not(self::comment())]
+						| following-sibling::tei:rs/node()" />
+				</xsl:otherwise>
+			</xsl:choose>
+		</rs>
 	</xsl:template>
+	<xsl:template match="tei:rs[preceding-sibling::node()[1][self::tei:rs]]" />
 	
 	<xsl:template match="tei:ref[@type='biblical' and not(preceding-sibling::node()[1][self::tei:ref[@type='biblical']])]">
 		<xsl:variable name="myId" select="generate-id()" />
@@ -88,29 +69,84 @@
 		<xsl:apply-templates />
 	</xsl:template>
 	
-	<xsl:template match="tei:note[@type='comment' and preceding-sibling::tei:note]"/>
+	<xsl:template match="tei:note[@type='comment' and preceding-sibling::node()[1][self::tei:note]]"/>
 	<xsl:template match="tei:note[@type='comment' and not(preceding-sibling::tei:note)]">
 		<note type="comment">
-			<xsl:sequence select="node() | following-sibling::tei:note/node()" />
+			<xsl:sequence select="node()" />
+			<xsl:choose>
+				<xsl:when test="following-sibling::*[not(self::tei:note)]">
+					<xsl:sequence select="following-sibling::tei:note/node()
+						intersect following-sibling::tei:*[not(self::tei:note)]/preceding-sibling::*" />
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:sequence select="following-sibling::tei:note/node()" />
+				</xsl:otherwise>
+			</xsl:choose>
 		</note>
 	</xsl:template>
 	
 	<xsl:template match="text()[parent::tei:note[@type='crit_app'] or parent::tei:span]" >
-		<xsl:if test="normalize-space() != ''">
-			<orig><xsl:value-of select="."/></orig>
-		</xsl:if>
+		<xsl:choose>
+			<xsl:when test="normalize-space() != ''">
+				<xsl:text> </xsl:text>
+				<orig><xsl:value-of select="normalize-space()"/></orig>
+				<xsl:if test="ends-with(., ' ')">
+					<xsl:text> </xsl:text>
+				</xsl:if>
+			</xsl:when>
+			<xsl:when test="following-sibling::tei:hi and preceding-sibling::tei:hi">
+				<xsl:text> </xsl:text>
+			</xsl:when>
+		</xsl:choose>
 	</xsl:template>
 	<xsl:template match="tei:hi[@style='font-style: italic;'][parent::tei:note[@type='crit_app']
 		or parent::tei:span]" >
-		<xsl:apply-templates />
+		<xsl:choose>
+			<xsl:when test="normalize-space() = ''">
+				<xsl:text> </xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates />
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 	
-	<!--<xsl:template match="tei:anchor[not(ends-with(@xml:id, 'e'))]">
-		<xsl:variable name="id" select="'#'||@xml:id" />
-		<xsl:sequence select="//tei:span[@from=$id]"/>
-		<xsl:sequence select="." />
+	<xsl:template match="tei:div">
+		<xsl:text>
+			</xsl:text>
+		<xsl:copy>
+			<xsl:apply-templates />
+		</xsl:copy>
 	</xsl:template>
-	<xsl:template match="tei:span" />-->
+	<xsl:template match="tei:p">
+		<xsl:copy>
+			<xsl:apply-templates />
+		</xsl:copy>
+	</xsl:template>
+	<xsl:template match="tei:p/tei:lb">
+		<lb />
+	</xsl:template>
+	
+	<xsl:template match="tei:note[@type = 'footnote']/tei:hi[preceding-sibling::node()[1][self::tei:hi]]"/>
+		
+	<xsl:template match="tei:note[@type = 'footnote']/tei:hi[not(preceding-sibling::node()[1][self::tei:hi])]">
+		<hi>
+			<xsl:apply-templates select="@style | @rend" />
+			<xsl:value-of select="string-join(.
+				| following-sibling::tei:hi intersect following-sibling::node()[not(self::tei:hi)][1]/preceding-sibling::*, '')"/>
+		</hi>
+	</xsl:template>
+	
+	<xsl:template match="text()[following-sibling::*[1][self::tei:note[@place = 'margin']]]">
+		<xsl:choose>
+			<xsl:when test="ends-with(., ' ')">
+				<xsl:value-of select="substring(., 1, string-length() - 1)" />
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="."/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 	
 	<xsl:template match="@* | * | comment()">
 		<xsl:copy>

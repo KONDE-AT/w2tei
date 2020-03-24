@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+	xmlns:wt="https://github.com/dariok/w2tei" stylesheet="word-pack.xsl">
+	
+	<x:scenario label="T1: Scenario for testing function is">
+		<x:scenario label="T1.1: strict, genau">
+			<x:call function="wt:is">
+				<x:param name="context">
+					<w:p w:rsidR="009E30B3" w:rsidRPr="00C43B00" w:rsidRDefault="003A3C64" w:rsidP="00C43B00">
+						<w:pPr>
+							<w:pStyle w:val="Kopfregest"/>
+						</w:pPr>
+					</w:p>
+				</x:param>
+				<x:param name="test" select="'Kopfregest'"/>
+				<x:param name="pr" select="'p'" />
+				<x:param name="strict" select="true()" />
+			</x:call>
+			<x:expect label="true" select="true()"/>
+		</x:scenario>
+		<x:scenario label="T1.2: strict, länger">
+			<x:call function="wt:is">
+				<x:param name="context">
+					<w:p w:rsidR="009E30B3" w:rsidRPr="00C43B00" w:rsidRDefault="003A3C64" w:rsidP="00C43B00">
+						<w:pPr>
+							<w:pStyle w:val="Kopfregest-Namensliste"/>
+						</w:pPr>
+					</w:p>
+				</x:param>
+				<x:param name="test" select="'Kopfregest'"/>
+				<x:param name="pr" select="'p'" />
+				<x:param name="strict" select="true()" />
+			</x:call>
+			<x:expect label="false" select="false()"/>
+		</x:scenario>
+	</x:scenario>
+
+	<!--<x:scenario label="Scenario for testing function is">
+		<x:call function="wt:is">
+			<x:param name="context" select="''"/>
+			<x:param name="test" select="''"/>
+			<x:param name="pr" select="''"/>
+		</x:call>
+		<x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+	</x:scenario>-->
+
+	<x:scenario label="Scenarios for testing function string">
+		<x:scenario label="1: one w:t only">
+			<x:call function="wt:string">
+				<x:param name="context">
+					<w:p w:rsidR="00E95151" w:rsidRPr="00B471BC" w:rsidRDefault="00E95151" w:rsidP="00B471BC">
+						<w:pPr>
+							<w:pStyle w:val="KSEE-Titel"/>
+						</w:pPr>
+						<w:r w:rsidRPr="00B471BC">
+							<w:t>EE 103 [= Nr. 127]</w:t>
+						</w:r>
+					</w:p>
+				</x:param>
+			</x:call>
+			<x:expect label="one String" select="'EE 103 [= Nr. 127]'" />
+		</x:scenario>
+	</x:scenario>
+
+	<!--<x:scenario label="Scenario for testing function contains">
+		<x:call function="wt:contains">
+			<x:param name="context" select="''"/>
+			<x:param name="test" select="''"/>
+		</x:call>
+		<x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing function starts">
+		<x:call function="wt:starts">
+			<x:param name="context" select="''"/>
+			<x:param name="test" select="''"/>
+		</x:call>
+		<x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing function ends">
+		<x:call function="wt:ends">
+			<x:param name="context" select="''"/>
+			<x:param name="test" select="''"/>
+		</x:call>
+		<x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing function isFirst">
+		<x:call function="wt:isFirst">
+			<x:param name="context" select="''"/>
+			<x:param name="test" select="''"/>
+			<x:param name="pr" select="''"/>
+		</x:call>
+		<x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+	</x:scenario>
+
+	<x:scenario label="Scenario for testing function followMe">
+		<x:call function="wt:followMe">
+			<x:param name="context" select="''"/>
+			<x:param name="me" select="''"/>
+			<x:param name="test" select="''"/>
+			<x:param name="pr" select="''"/>
+		</x:call>
+		<x:expect label="Not yet implemented" select="'Not yet implemented'"/>
+	</x:scenario>-->
+	
+	<x:scenario label="T9: hasContent()">
+		<x:scenario label="T9.1">
+			<x:call function="wt:hasContent">
+				<x:param name="context">
+					<w:p w:rsidR="006A04B2" w:rsidRPr="00C43B00" w:rsidRDefault="006A04B2" w:rsidP="00C43B00">
+						<w:pPr>
+							<w:pStyle w:val="Kopfregest"/>
+						</w:pPr>
+						<w:r w:rsidRPr="00C43B00">
+							<w:t>Teildruck</w:t>
+						</w:r>
+						<w:r w:rsidR="003D78FB" w:rsidRPr="00C43B00">
+							<w:t xml:space="preserve"> (I, II)</w:t>
+						</w:r>
+						<w:r w:rsidRPr="00C43B00">
+							<w:t xml:space="preserve">: </w:t>
+						</w:r>
+						<w:r w:rsidRPr="00C43B00">
+							<w:rPr>
+								<w:smallCaps/>
+							</w:rPr>
+							<w:t>Redlich</w:t>
+						</w:r>
+						<w:r w:rsidRPr="00C43B00">
+							<w:t>, Staats- und Reichsproblem 2, 619, Fußnote *</w:t>
+						</w:r>
+						<w:r w:rsidR="000D342F" w:rsidRPr="00C43B00">
+							<w:t xml:space="preserve"> (I), 625 (II)</w:t>
+						</w:r>
+						<w:r w:rsidRPr="00C43B00">
+							<w:t>.</w:t>
+						</w:r>
+					</w:p>
+				</x:param>
+			</x:call>
+			<x:expect label="true" select="true()" />
+		</x:scenario>
+		<x:scenario label="T9.2: nix">
+			<x:call function="wt:hasContent">
+				<x:param name="context">
+					<w:p w:rsidR="00B504F7" w:rsidRPr="00C43B00" w:rsidRDefault="00B504F7" w:rsidP="00C43B00">
+						<w:pPr>
+							<w:pStyle w:val="Kopfregest"/>
+						</w:pPr>
+					</w:p>
+				</x:param>
+			</x:call>
+			<x:expect label="false" select="false()" />
+		</x:scenario>
+	</x:scenario>
+</x:description>

@@ -1,8 +1,13 @@
 /.project
 /*.docx
 /test/*.docx
-add/wtotei-intro-result.html
+add/*-report.html
+*-report.html
 *.zip
 /fertig/
 /test/
-/result/
+result/
+xspec/
+wt0.xml
+wt1.xml
+wt2.xml

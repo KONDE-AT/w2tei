@@ -4,7 +4,7 @@ declare option exist:serialize "method=html5 media-type=text/html";
 
 <html>
 	<head>
-		<title>Table Conversion</title>
+		<title>Text document to TEI conversion</title>
 	</head>
 	<body>
 		<div id="content">
@@ -23,6 +23,8 @@ declare option exist:serialize "method=html5 media-type=text/html";
 									<option value="{$file/@file}">{xs:string($file/@label)}</option>
 						}
 					</select>
+					<br />
+					<label>Apply base Word → TEI transformation? </label> <input name="base" type="checkbox" />
 				</fieldset>
 			</form>
 		</div>

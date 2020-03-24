@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns:tei="http://www.tei-c.org/ns/1.0"
+	xmlns:wdb="https://github.com/dariok/wdbplus"
+	xmlns:hab="http://diglib.hab.de"
+	xmlns="http://www.tei-c.org/ns/1.0"
+	stylesheet="intro-3.xsl">
+	<x:scenario label="T1: hi (italic) -> term">
+		<x:context>
+			<p>
+				<hi style="font-style: italic;">151 Conclusiones</hi>, Th. 141f. (KGK I.1, Nr. 58, S. 510, Z. 13f.). Hinter dieser Argumentation steht
+			</p>
+		</x:context>
+		<x:expect label="term">
+			<p>
+				<term type="term">151 Conclusiones</term>, Th. 141f. (KGK I.1, Nr. 58, S. 510, Z. 13f.). Hinter dieser Argumentation steht
+			</p>
+		</x:expect>
+	</x:scenario>
+	
+	<x:scenario label="T2: quote">
+		<x:scenario label="T2.1: einfach">
+			<x:context>
+				<p>
+					Immatrikuliert wurde er als <hab:qs/><rs type="person">Joannes günkeulin</rs
+					> de <rs type="place">Wangen</rs><hab:qe/> im Sommersemester 1504 (<bibl>AAV 1, 14</bibl
+					>). Der Rotulus von 1507 führt <rs type="person">Gunckel</rs
+					> als Magister <hab:qs/>in philosophia extraordinarie<hab:qe/>, <bibl>UUW 1, 16 Nr. 17</bibl
+					>; 1512 ist er einer der <hab:qs/>magistri collegiati<hab:qe/>, <bibl>UUW 1, 63 Nr. 36</bibl>.
+				</p>
+			</x:context>
+			<x:expect label="normale quote">
+				<p>
+					Immatrikuliert wurde er als <quote><rs type="person">Joannes günkeulin</rs> de <rs
+						type="place">Wangen</rs></quote> im Sommersemester 1504 (<bibl>AAV 1, 14</bibl>). Der Rotulus von 1507 führt <rs type="person">Gunckel</rs
+					> als Magister <quote>in philosophia extraordinarie</quote>, <bibl>UUW 1, 16 Nr. 17</bibl
+					>; 1512 ist er einer der <quote>magistri collegiati</quote>, <bibl>UUW 1, 63 Nr. 36</bibl>.
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.2: geschachtelt">
+			<x:context>
+				<p>16,32: <hab:qs/>Magnum aliquod Pelagiani se scire putant, quando dicunt, <hab:qs/>Non juberet Deus, quod sciret non posse ab homine fieri.<hab:qe/> quis hoc nesciat? Sed ideo jubet aliqua quae non possumus, ut noverimus quid ab illo petere debeamus. Ipsa est enim fides, quae orando impetrat quod lex imperat.<hab:qe/> (</p>
+			</x:context>
+			<x:expect label="geschachtelte quote">
+				<p>16,32: <quote>Magnum aliquod Pelagiani se scire putant, quando dicunt, <quote>Non juberet Deus, quod sciret non posse ab homine fieri.</quote> quis hoc nesciat? Sed ideo jubet aliqua quae non possumus, ut noverimus quid ab illo petere debeamus. Ipsa est enim fides, quae orando impetrat quod lex imperat.</quote> (</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.3: quote mit gap">
+			<x:context>
+				<p><note type="footnote">lautet: <hab:qs xmlns:hab="http://diglib.hab.de"/>&lt;...&gt; de quolibet anno 1514<hab:qe xmlns:hab="http://diglib.hab.de"/>. Rest der Seite leer.</note> auf dessem</p>
+			</x:context>
+			<x:expect label="gap in qupte">
+				<p><note type="footnote">lautet: <quote>&lt;...&gt; de quolibet anno 1514</quote>. Rest der Seite leer.</note> auf dessem</p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T4: verschiedene">
+		<x:scenario label="T4.1: Reihenfolge in msIdentifier">
+			<x:context>
+				<msIdentifier><altIdentifier type="siglum"><idno>a</idno></altIdentifier><repository>Andreas-Möller-Bibliothek des Geschwister-Scholl-Gymnasiums Freiberg</repository><idno type="signatur">VII 4° 12, fol. 228r–256v und 379r–398v</idno></msIdentifier>
+			</x:context>
+			<x:expect label="altIdentifier hinten">
+				<msIdentifier>
+					<repository>Andreas-Möller-Bibliothek des Geschwister-Scholl-Gymnasiums Freiberg</repository>
+					<idno type="signatur">VII 4° 12, fol. 228r–256v und 379r–398v</idno>
+					<altIdentifier type="siglum"><idno>a</idno></altIdentifier>
+				</msIdentifier>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+</x:description>

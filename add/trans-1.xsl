@@ -3,29 +3,30 @@
     xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage"
     xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
     xmlns:hab="http://diglib.hab.de"
-    xmlns:wdb="https://github.com/dariok/wdbplus"
+    xmlns:wt="https://github.com/dariok/w2tei"
+    xmlns:xstring="https://github.com/dariok/XStringUtils"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     xmlns="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="#all" version="3.0">
     
     <xsl:include href="styles-inc.xsl"/>
+    <xsl:include href="ref-qv.xsl" />
     
 <!--    <xsl:output indent="yes"/>-->
+
+	<xsl:template match="tei:*">
+		<xsl:copy>
+			<xsl:apply-templates select="@* | node()" />
+		</xsl:copy>
+	</xsl:template>
     
-    <xsl:template match="tei:*">
-        <xsl:element name="{local-name()}">
-            <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates />
-        </xsl:element>
-    </xsl:template>
-    
-    <xsl:template match="w:footnotes | w:endnotes | w:numbering | w:comments" />
+    <xsl:template match="w:endnotes | w:footnotes | w:numbering | w:comments" />
     
     <xsl:template match="w:p[not(w:r)]" />
     
     <!-- Marginalie -->
-    <xsl:template match="w:p[wdb:is(., 'KSMarginalie', 'p')]">
+    <xsl:template match="w:p[wt:is(., 'KSMarginalie', 'p') and w:r]">
         <note place="margin"><xsl:apply-templates select="w:r" /></note>
     </xsl:template>
     
@@ -35,6 +36,7 @@
             <xsl:apply-templates select="w:p[descendant::w:numPr]"/>
         </list>
     </xsl:template>
+    
     <xsl:template match="w:p[descendant::w:numPr]">
         <xsl:variable name="numId" select="descendant::w:numPr/w:numId/@w:val"/>
         <xsl:variable name="ilvl" select="descendant::w:numPr/w:ilvl/@w:val"/>
@@ -44,7 +46,7 @@
         
         <label>
             <xsl:choose>
-                <xsl:when test="wdb:is(w:r[1], 'KSkorrigierteThesennummer', 'r')">
+                <xsl:when test="wt:is(w:r[1], 'KSkorrigierteThesennummer', 'r')">
                     <app>
                         <lem>
                             <xsl:choose>
@@ -80,7 +82,7 @@
                     <xsl:text>.</xsl:text>
                 </xsl:otherwise>
             </xsl:choose>
-        	<xsl:if test="w:r[1]/w:footnoteReference and wdb:starts(., ' ')">
+        	<xsl:if test="w:r[1]/w:footnoteReference and wt:starts(., ' ')">
         		<xsl:apply-templates select="w:r[1]"/>
         	</xsl:if>
         </label>
@@ -97,9 +99,9 @@
         	</xsl:choose>
         </item>
     </xsl:template>
-    <xsl:template match="w:r[wdb:is(., 'KSkorrigierteThesennummer', 'r')]" />
+    <xsl:template match="w:r[wt:is(., 'KSkorrigierteThesennummer', 'r')]" />
     
-    <xsl:template match="w:p[w:r and not(wdb:is(., 'KSMarginalie', 'p') or descendant::w:numPr
+    <xsl:template match="w:p[w:r and not(wt:is(., 'KSMarginalie', 'p') or descendant::w:numPr
         or ancestor::w:endnote or ancestor::w:footnote)]">
         <!--<xsl:param name="parind" select="xs:integer(0)"/>-->
         <xsl:variable name="parind" select="descendant::w:ind/@w:left"/>
@@ -112,7 +114,7 @@
             </xsl:choose>
         </xsl:variable>
         <xsl:variable name="temp">
-            <xsl:apply-templates select="w:r | w:bookmarkStart"/>
+            <xsl:apply-templates select="w:r | w:bookmarkStart | w:bookmarkEnd"/>
         </xsl:variable>
         <xsl:variable name="content">
             <xsl:for-each select="$temp/node()">
@@ -125,10 +127,10 @@
                             <xsl:non-matching-substring>
                                 <xsl:choose>
                                     <xsl:when test="ends-with(., '')">
-                                        <xsl:value-of select="wdb:substring-before-if-ends(., '')"/>
+                                        <xsl:value-of select="xstring:substring-before-if-ends(., '')"/>
                                     </xsl:when>
                                     <xsl:when test="ends-with(., '⏊')">
-                                        <xsl:value-of select="wdb:substring-before-if-ends(., '⏊')"/>
+                                        <xsl:value-of select="xstring:substring-before-if-ends(., '⏊')"/>
                                     </xsl:when>
                                     <xsl:otherwise>
                                         <xsl:value-of select="."/>
@@ -143,7 +145,8 @@
                 </xsl:choose>
             </xsl:for-each>
         </xsl:variable>
-        
+    	<xsl:text>
+					</xsl:text>
         <lb />
         <xsl:choose>
             <xsl:when test="$relind castable as xs:integer and  $relind > 0">
@@ -158,50 +161,22 @@
     </xsl:template>
     <!-- Ende Paragraphen -->
     
-    <!-- Verweise -->
-    <xsl:template match="w:bookmarkStart">
-        <xsl:if test="not(@w:name = '_GoBack')">
-            <hab:bm name="{@w:name}"/>
-        </xsl:if>
-    </xsl:template>
-    <xsl:template match="w:r[w:fldChar]">
-        <xsl:if test="not(w:fldChar/@w:fldCharType='separate')">
-            <hab:mark>
-                <xsl:if test="w:fldChar/@w:fldCharType='begin'">
-                    <xsl:attribute name="ref" select="normalize-space(following-sibling::w:r[1]/w:instrText)"/>
-                </xsl:if>
-            </hab:mark>
-        </xsl:if>
-    </xsl:template>
-    
-    <!-- EE-Verweis -->
-    <xsl:template match="w:r[wdb:is(., 'KSEEVerweis', 'r')]">
-        <ptr type="wdb">
-            <xsl:choose>
-                <xsl:when test="contains(., 'II')">
-                    <xsl:comment> TODO verlinken</xsl:comment>
-                    <xsl:apply-templates select="w:t" />
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:comment> TODO verlinken</xsl:comment>
-                    <xsl:apply-templates select="w:t" />
-                </xsl:otherwise>
-            </xsl:choose>
-        </ptr>
-    </xsl:template>
-    
     <!-- Langes Zitat bzw. Paraphrase -->
-    <xsl:template match="w:r[wdb:isFirst(., 'KSQuote', 'r')]">
+    <xsl:template match="w:r[wt:isFirst(., 'KSQuote', 'r')]">
         <hab:para place="start"/>
     </xsl:template>
-    <xsl:template match="w:r[wdb:is(., 'KSQuote', 'r') and following::w:r[1][not(wdb:is(., 'KSQuote', 'r'))]]">
+    <xsl:template match="w:r[wt:is(., 'KSQuote', 'r') and following::w:r[1][not(wt:is(., 'KSQuote', 'r'))]]">
         <hab:para place="end" />
     </xsl:template>
     
-    <!-- kritische Anmerkungen -->
-    <xsl:template match="w:r[descendant::w:footnoteReference]">
-        <xsl:apply-templates select="w:footnoteReference" />
-    </xsl:template>
+	<!-- kritische Anmerkungen -->
+	<xsl:template match="w:r[descendant::w:footnoteReference
+		and not(wt:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')
+		or wt:is(., 'KSOrt', 'r')
+		or wt:is(., 'KSPerson', 'r'))]">
+		<xsl:apply-templates select="w:footnoteReference" />
+	</xsl:template>
+	
     <xsl:template match="w:footnoteReference">
         <note type="crit_app">
             <xsl:variable name="wid" select="@w:id"/>
@@ -209,69 +184,69 @@
         </note>
     </xsl:template>
     
-    <xsl:template match="w:r[wdb:isFirst(., 'KSkritischeAnmerkungbermehrereWrter', 'r')
-        and following::w:r[1][wdb:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')]]">
+    <xsl:template match="w:r[wt:isFirst(., 'KSkritischeAnmerkungbermehrereWrter', 'r')
+        and following::w:r[1][wt:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')]]">
         <anchor type="crit_app" ref="s"/>
         <xsl:apply-templates select="w:t" />
     </xsl:template>
-    <xsl:template match="w:r[wdb:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r') and
-        not(following::w:r[1][wdb:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')])]">
-        <xsl:if test="not(preceding::w:r[1][wdb:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')])">
-            <anchor type="crit_app" ref="s" />
-        </xsl:if>
-        <xsl:apply-templates select="w:t" />
-        <anchor type="crit_app" ref="se" />
-    </xsl:template>
+	<xsl:template match="w:r[wt:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')
+		and not(following::w:r[1][wt:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')])
+		and not(ancestor::w:footnote)]">
+		<xsl:if test="not(preceding::w:r[1][wt:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')])">
+			<anchor type="crit_app" ref="s" />
+		</xsl:if>
+		<xsl:apply-templates select="w:t" />
+		<anchor type="crit_app" ref="se" />
+	</xsl:template>
+	
     <!-- es kommen krit. oder Sachanmerkungen innerhalb dieses Teils vor -->
-    <xsl:template match="w:r[wdb:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')
-        and following::w:r[1][wdb:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')]
-        and preceding::w:r[1][wdb:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')]]">
-        <xsl:apply-templates select="w:t | w:footnoteReference | w:endnoteReference"/>
-    </xsl:template>
+	<xsl:template match="w:r[not(wt:isFirst(., 'KSkritischeAnmerkungbermehrereWrter', 'r'))
+		and wt:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')
+		and following::w:r[1][wt:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')]
+		and preceding::w:r[1][wt:is(., 'KSkritischeAnmerkungbermehrereWrter', 'r')]
+		and not(w:endnoteReference)]">
+		<xsl:apply-templates select="w:t | w:footnoteReference"/>
+	</xsl:template>
     
-    <xsl:template match="w:r[wdb:is(., 'KSKommentar', 'r') and not(descendant::w:i/@w:val='0')]">
+    <xsl:template match="w:r[wt:is(., 'KSKommentar', 'r') and not(descendant::w:i/@w:val='0')
+        and not(descendant::w:vertAlign)]">
         <note type="comment">
             <xsl:apply-templates select="w:t"/>
         </note>
     </xsl:template>
-    <xsl:template match="w:r[wdb:is(., 'KSKommentar', 'r') and descendant::w:i/@w:val='0']">
+    <xsl:template match="w:r[wt:is(., 'KSKommentar', 'r') and not(descendant::w:i/@w:val='0')
+        and descendant::w:vertAlign]">
+    	<note type="comment">
+        <hi>
+            <xsl:attribute name="rend">
+                <xsl:choose>
+                    <xsl:when test="descendant::w:vertAlign/@w:val='subscript'">sub</xsl:when>
+                    <xsl:otherwise>super</xsl:otherwise>
+                </xsl:choose>
+            </xsl:attribute>
+            <xsl:apply-templates select="w:t"/>
+        </hi>
+    	</note>
+    </xsl:template>
+    <xsl:template match="w:r[wt:is(., 'KSKommentar', 'r') and descendant::w:i/@w:val='0']">
          <note type="comment"><orig><xsl:apply-templates select="w:t"/></orig></note>
     </xsl:template>
     <!-- ENDE kritische Anmerkungen -->
     
-    <!-- neu 2017-12-08 DK -->
-    <xsl:template match="w:r[wdb:is(., 'KSBibelstelle', 'r')]">
-        <xsl:choose>
-            <xsl:when test="ends-with(w:t, 'Vg')">
-                <ref type="biblical"><xsl:value-of select="substring-before(w:t, ' Vg')"/></ref> Vg
-            </xsl:when>
-            <xsl:otherwise>
-                <ref type="biblical"><xsl:apply-templates select="w:t" /></ref>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-    
-    <xsl:template match="w:r[wdb:is(., 'KSAutorenstelle', 'r')]">
+    <!--<xsl:template match="w:r[wt:is(., 'KSAutorenstelle', 'r')]">
         <ref type="medieval">
-            <xsl:attribute name="cRef">
-                <xsl:value-of select="substring-before(w:t, ',')" />
-                <xsl:text>!</xsl:text>
-                <xsl:value-of select="normalize-space(substring-after(w:t, ','))" />
-            </xsl:attribute>
-            <xsl:comment>TODO: cRef prüfen!</xsl:comment>
             <xsl:apply-templates select="w:t" />
         </ref>
-    </xsl:template>
-    
-    <!--<xsl:template match="w:r[not(w:rStyle or descendant::w:footnoteReference or descendant::w:endnoteReference or descendant::w:i)]">
-        <xsl:apply-templates select="w:t" />
     </xsl:template>-->
     
-    <xsl:template match="w:p[wdb:is(., 'KSlistWit', 'p')]">
+    <!--<xsl:template match="w:p[wt:is(., 'KSlistWit', 'p')]">
         <xsl:variable name="text"><xsl:apply-templates select="w:r"/></xsl:variable>
-        <xsl:variable name="value" select="wdb:substring-before-if-ends($text, '')"/>
+        <xsl:variable name="value" select="xstring:substring-before-if-ends($text, '')"/>
         <witness><xsl:value-of select="$value"/></witness>
-    </xsl:template>
+    </xsl:template>-->
+	<xsl:template match="w:p[wt:is(., 'KSlistWit', 'p')]" />
+    
+    <xsl:template match="*:part" />
     
     <xsl:template match="text() | @*">
         <xsl:copy>

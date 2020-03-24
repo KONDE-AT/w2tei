@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+	xmlns="http://www.tei-c.org/ns/1.0"
+	xmlns:wdb="https://github.com/dariok/wdbplus"
+	stylesheet="trans-5.xsl">
+	
+	<x:scenario label="T1: folgt">
+		<x:scenario label="T1.1: LD, 2 verschiedene">
+			<x:context xml:space="preserve">
+				<p>
+					<lb/>Nam secundum <rs type="person"><!--TODO ref nachtragen--><expan>Aposto<ex>lum</ex></expan></rs> per unum hominem intravit peccatum<note type="crit_app">folgt <orig>in mundum</orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>in mundum</orig> am Rand hinzugefügt A<hi rend="sub">5Lp</hi> </note> in omnes homines<note type="footnote">Vgl. <ref type="biblical" cRef="Rm 5,12">Röm 5,12</ref>.</note> Sicut
+				</p>
+			</x:context>
+			<x:expect label="2 add" xml:space="preserve">
+				<p>
+					<lb/>Nam secundum <rs type="person"><!--TODO ref nachtragen--><expan>Aposto<ex>lum</ex></expan></rs> per unum hominem intravit peccatum<app><lem/><rdg wit="#a1">in mundum</rdg><rdg wit="#A5Lp"><add place="margin">in mundum</add></rdg></app> in omnes homines<note type="footnote">Vgl. <ref type="biblical" cRef="Rm 5,12">Röm 5,12</ref>.</note> Sicut
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.2: 2 orig">
+			<x:context>
+				<p><lb/>Deinde quod mea conclusio septima<note type="crit_app">folgt  <orig>in</orig>  <orig>ordine</orig> a<hi rend="sub">1</hi></note> clare hoc proponit ista scilicet errat</p>
+			</x:context>
+			<x:expect label="ein add">
+				<p><lb/>Deinde quod mea conclusio septima<app><lem/><rdg wit="#a1">in ordine</rdg></app> clare hoc proponit ista scilicet errat</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.3: mehrere Zeugen">
+			<x:context>
+				<p>Non<note type="crit_app">folgt  <orig>enim</orig> a<hi rend="sub">1</hi>, A<hi rend="sub">4</hi><hi rend="sub">-5</hi></note></p>
+			</x:context>
+			<x:expect label="wit mit mehreren Einträgen">
+				<p>Non<app><lem /><rdg wit="#a1 #A4-5">enim</rdg></app></p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.4: nicht umsetzbar">
+			<x:context>
+				<p>primum<note type="crit_app">folgt  <orig>tunc</orig> und ein Wort durchgestrichen a<hi rend="sub">1</hi></note> concordamus</p>
+			</x:context>
+			<x:expect label="note">
+				<p>primum<note type="crit_app">folgt  <orig>tunc</orig> und ein Wort durchgestrichen a<hi rend="sub">1</hi></note> concordamus</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.5: folgt durchgestrichen">
+			<x:context>
+				<p>unde ex<note type="crit_app">folgt  <orig>materia</orig> durchgestrichen a<hi rend="sub">1</hi></note> causa</p>
+			</x:context>
+			<x:expect label="add/del">
+				<p>unde ex<app><lem/><rdg wit="#a1"><del>materia</del></rdg></app> causa</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.6: folgt als Lauftext">
+			<x:context>
+				<p>que est. Nisi<note type="crit_app">folgt ein Wort durchgestrichen a<hi rend="sub">1</hi></note> sanctissimum</p>
+			</x:context>
+			<x:expect label="Volltext">
+				<p>que est. Nisi<note type="crit_app">folgt ein Wort durchgestrichen a<hi rend="sub">1</hi></note> sanctissimum</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.7: nur teils umsetzbare note">
+			<x:context>
+				<p><lb/>quia voluntas<note type="crit_app"> <orig>quomodo voluntas sit domina famula</orig> a<hi rend="sub">2</hi> AuRd-Gl</note> sit domina actuum. comparando ad actus inferiores. et tamen sit famula <w>com<lb break="no"/>perando</w> ad Christum<note type="crit_app">folgt ein Wort durchgestrichen a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> am Rand hinzugefügt <orig>Christum</orig> a<hi rend="sub">3</hi>(?)</note> in ea<note type="crit_app"> <orig>eo</orig> a<hi rend="sub">1</hi></note> regnantem.<note type="footnote">Vgl. KGK I.2, Nr. 90, S. 964 Z. 15-18</note> adhuc tamen ut videretur aliquid mihi impingere<note type="crit_app"> <orig>mihi aliquid impendere</orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> korrigiert in  <orig>impingere</orig> a<hi rend="sub">3</hi>(?)</note></p>
+			</x:context>
+			<x:expect label="ursprüngl. note">
+				<p><lb/>quia <app><lem>voluntas</lem><rdg wit="#a2" rend="AuRd-Gl">quomodo voluntas sit domina famula</rdg></app> sit domina actuum. comparando ad actus inferiores. et tamen sit famula <w>com<lb break="no"/>perando</w> ad Christum<note type="crit_app">folgt ein Wort durchgestrichen a<hi rend="sub">1</hi>;  am Rand hinzugefügt <orig>Christum</orig> a<hi rend="sub">3</hi>(?)</note> in <app><lem>ea</lem><rdg wit="#a1">eo</rdg></app> regnantem.<note type="footnote">Vgl. KGK I.2, Nr. 90, S. 964 Z. 15-18</note> adhuc tamen ut videretur aliquid mihi <app><lem>impingere</lem><rdg wit="#a1">mihi aliquid impendere</rdg><rdg wit="#a3(?)" cause="correction">impingere</rdg></app></p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.8: text vor krit. FN – „folgt“">
+			<x:context>
+				<p>
+					<w>ful<lb break="no"/>ten.</w> Wie sie<note type="crit_app">folgt<orig> auch </orig>a</note> entlich heylig<note type="crit_app">folgt<orig> <expan>D<ex>octo</ex>r</expan> </orig>b</note>
+				</p>
+			</x:context>
+			<x:expect label="Spatium; add mit wit">
+				<p>
+					<w>ful<lb break="no"/>ten.</w> Wie sie<app><lem/><rdg wit="#a">auch</rdg></app> entlich heylig<app><lem/><rdg wit="#b"><expan>D<ex>octo</ex>r</expan></rdg></app>
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.9: mit note">
+			<x:context>
+				<p>
+					iuditio iusto<note type="crit_app">folgt  <orig>f</orig> a<hi rend="sub">1</hi> <note type="comment">gestrichen</note> </note> factus
+				</p>
+			</x:context>
+			<x:expect label="note übernommen, nicht in @wit">
+				<p>iuditio iusto<app><lem/><rdg wit="#a1">f<note type="comment">gestrichen</note></rdg></app> factus
+				</p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T2: app/lem/rdg">
+		<x:scenario label="T2.1">
+			<x:context>
+				<p>sanctissimum<note type="crit_app"> <orig>sactissimum</orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>sanctissimum</orig> a<hi rend="sub">2</hi> <note type="comment">korrigiert</note></note> in</p>
+			</x:context>
+			<x:expect label="letzes rdg mit note">
+				<p><app><lem>sanctissimum</lem><rdg wit="#a1">sactissimum</rdg><rdg wit="#a2">sanctissimum<note type="comment">korrigiert</note></rdg></app> in</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.2: vorher rs mit mehreren Wörtern">
+			<x:context>
+				<p>ad <rs type="person"><!--TODO ref nachtragen--><expan>D<ex>ominum</ex></expan> Eccium</rs><note type="crit_app"> <orig>Eckium</orig> A<hi rend="sub">5</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>Ecckium</orig> a<hi rend="sub">1</hi></note></p>
+			</x:context>
+			<x:expect label="app in rs" xml:space="preserve"><p>ad <rs type="person"><!--TODO ref nachtragen--><expan>D<ex
+				>ominum</ex></expan>  <app><lem>Eccium</lem><rdg wit="#A5">Eckium</rdg><rdg wit="#a1">Ecckium</rdg></app></rs></p></x:expect>
+		</x:scenario>
+		<x:scenario label="T2.3: Zeilenanfang einfach">
+			<x:context>
+				<p>
+					<lb/>Wie<note type="crit_app"><orig>Die </orig>a</note> heylickeit in diessem <w>le<lb break="no"/>ben</w> geschicht.
+				</p>
+			</x:context>
+			<x:expect label="lem und rdg">
+				<p>
+					<lb/><app><lem>Wie</lem><rdg wit="#a">Die</rdg></app> heylickeit in diessem <w>le<lb break="no"/>ben</w> geschicht.
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.4: mehrere rdg">
+			<x:context>
+				<p>
+					<lb/>das an der schotistichen<note type="crit_app"><orig>schotistischen </orig>WA<wdb:marker  xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>Scotistischen </orig>EA</note> und <anchor type="crit_app" xml:id="s1"/>textualis logicis und physicis<anchor type="crit_app" xml:id="s1e"/><span type="crit_app" from="#s1" to="#s1e"><orig>Textual Logica und Physica </orig>EA</span> gnug
+				</p>
+			</x:context>
+			<x:expect label="lem, 2rdg">
+				<p>
+					<lb/>das an der <app><lem>schotistichen</lem><rdg wit="#WA">schotistischen</rdg><rdg wit="#EA">Scotistischen</rdg></app> und <app><lem>textualis logicis und physicis</lem><rdg wit="#EA">Textual Logica und Physica</rdg></app> gnug
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.5: mehrere Zeugen im rdg">
+			<x:context>
+				<p>
+					<lb/>Ad stupeum pensum sophistarum haud stupescam. 
+					<lb/>nis disputata, contra antiquiorem veritatem<note type="crit_app"><orig>veriratem </orig>F, G<hi rend="sub">1</hi>, H</note> producens, novum
+					<lb/>ius consuetudinis et praescriptionis adinvenit haud priori
+				</p>
+			</x:context>
+			<x:expect label="wit mit mehreren">
+				<p>
+					<lb/>Ad stupeum pensum sophistarum haud stupescam. 
+					<lb/>nis disputata, contra antiquiorem <app><lem>veritatem</lem><rdg wit="#F #G1 #H">veriratem</rdg></app> producens, novum
+					<lb/>ius consuetudinis et praescriptionis adinvenit haud priori
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.6: mit Sonderzeichen etc.">
+			<x:context>
+				<list>
+					<label>V.<note type="crit_app"><orig> V┐ </orig>F, G<hi rend="sub">1</hi>, H.</note>
+					</label>
+					<item> Dominus <rs type="person"><!--TODO ref eintragen--><expan>Ioan<ex>nes</ex></expan></rs> Omnes iustos poenitere audacter negans, negat<lb/>quod confitetur ecclesia: est quoque anathemate<note type="crit_app"><orig> ʔ.iathemate </orig>F.</note> percussus,<lb/>asseverans iustos viae: non esse peccatores proprie.<note type="footnote">Vgl. KGK I.2, Nr. 90, S. 882, Z. 1-8 und KGK I.2, Nr. 90, S. 917, Z. 1-7 und S. 923, Z. 19-23.</note> <w>Excom<lb break="no"/>municatus</w> autem quomodo ecclesiam defendet?<note type="crit_app"><orig> defendet: </orig>C.</note><note type="footnote">Vgl. KGK I.2, Nr. 90, S. 963, Z. 11-15.</note>
+					</item>
+				</list>
+			</x:context>
+			<x:expect label="G_1">
+				<list>
+					<label>
+						<app>
+							<lem>V.</lem>
+							<rdg wit="#F #G1 #H">V┐</rdg>
+						</app>
+					</label>
+					<item> Dominus <rs type="person"><!--TODO ref eintragen--><expan>Ioan<ex>nes</ex></expan></rs> Omnes iustos poenitere audacter negans, negat<lb/>quod confitetur ecclesia: est quoque <app>
+						<lem>anathemate</lem>
+						<rdg wit="#F">ʔ.iathemate</rdg>
+					</app> percussus,<lb/>asseverans iustos viae: non esse peccatores proprie.<note type="footnote">Vgl. KGK I.2, Nr. 90, S. 882, Z. 1-8 und KGK I.2, Nr. 90, S. 917, Z. 1-7 und S. 923, Z. 19-23.</note> <w>Excom<lb break="no"/>municatus</w> autem quomodo ecclesiam <app>
+						<lem>defendet?</lem>
+						<rdg wit="#C">defendet:</rdg>
+					</app><note type="footnote">Vgl. KGK I.2, Nr. 90, S. 963, Z. 11-15.</note>
+					</item>
+				</list>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.7: rdg mit Kommentar">
+			<x:context>
+				<p>et<note type="crit_app"><orig> er </orig>B<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/><orig> ex </orig>C <note type="comment">mit hsl. Korrektur <orig>et</orig></note></note>
+				</p>
+			</x:context>
+			<x:expect label="comment mit orig im rdf">
+				<p>
+					<app>
+						<lem>et</lem>
+						<rdg wit="#B">er</rdg>
+						<rdg wit="#C">ex<note type="comment">mit hsl. Korrektur <orig>et</orig></note></rdg></app>
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.8: komplexere rdg">
+			<x:context>
+				<head>
+					<lb/><anchor type="crit_app" xml:id="s10"/>Scopus Disputationis.<anchor type="crit_app"
+						xml:id="s10e"/><span type="crit_app" from="#s10" to="#s10e">fehlt a<hi rend="sub"
+							>1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>linksbündig
+							hinzugefügt a<hi rend="sub">2</hi></span><anchor type="crit_app" xml:id="s11"/> Liberum arbitrium.<anchor
+								type="crit_app" xml:id="s11e"/><span type="crit_app" from="#s11"
+						to="#s11e">
+						<orig>Liberum arbitrium</orig> A<hi rend="sub">5</hi><wdb:marker
+							xmlns:wdb="https://github.com/dariok/wdbplus"/>
+						<orig>lberum ar</orig> a<hi rend="sub">1</hi><wdb:marker
+							xmlns:wdb="https://github.com/dariok/wdbplus"/> korrigiert in <orig>liberum
+								arbitrium</orig> a<hi rend="sub">2</hi><wdb:marker
+									xmlns:wdb="https://github.com/dariok/wdbplus"/>
+						<orig>Eckius <supplied>contra?</supplied> 11 conclusio<supplied>nem</supplied> doc
+							Corol<supplied>ostadii</supplied> de libero arbitrio</orig> a<hi rend="sub">2</hi>
+						AuRd-Gl<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>
+						<orig>2 hora</orig> A<hi rend="sub">5Lp</hi> InRd-Gl </span>
+				</head>
+				<head>
+					<lb/>&lt;<rs type="person"><!--TODO ref nachtragen-->Eccius</rs>&gt;</head>
+				<p>
+					<lb/><anchor type="crit_app" xml:id="s12"/><expan>Con<ex>tra</ex></expan> XI.<anchor type="crit_app" xml:id="s12e"/><note type="footnote">Vgl. Anm. <ptr type="wdb" target="#n3"/>.</note><span type="crit_app" from="#s12" to="#s12e"> <orig>contra 11</orig> zentriert a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>questio 14</orig> A<hi rend="sub">5Lp</hi> AuRd-Gl</span>  risit<note type="crit_app">fehlt a<hi rend="sub">1</hi></note><note type="footnote">Hier hat angeblich der Verfasser des Manuskriptes, das dem Druck zu Grunde liegt, auch die Reaktion Ecks – er lächelte oder lachelte – registriert. </note></p>
+			</x:context>
+			<x:expect label="langer Text nicht in @wit" xml:space="preserve"><head><lb/><app><lem>Scopus Disputationis.</lem
+				><rdg wit="#a1" /><rdg wit="#a2"><add place="left">Scopus Disputationis.</add></rdg></app><app><lem
+					> Liberum arbitrium.</lem><rdg wit="#A5">Liberum arbitrium</rdg><rdg wit="#a1">lberum ar</rdg><rdg
+						cause="correction" wit="#a2">liberum arbitrium</rdg><rdg wit="#a2" rend="AuRd-Gl">Eckius <supplied>contra?</supplied> 11 conclusio<supplied>nem</supplied> doc
+							Corol<supplied>ostadii</supplied> de libero arbitrio</rdg><rdg wit="#A5Lp" rend="InRd-Gl">2 hora</rdg></app
+				></head><head><lb/>&lt;<rs type="person"><!--TODO ref nachtragen-->Eccius</rs>&gt;</head><p><lb/><app><lem
+					><expan>Con<ex>tra</ex></expan> XI.</lem><rdg wit="#a1" rend="centre">contra 11</rdg><rdg wit="#A5Lp"
+						rend="AuRd-Gl">questio 14</rdg></app><note type="footnote">Vgl. Anm. <ptr type="wdb"
+								target="#n3"/>.</note>  <app><lem>risit</lem><rdg wit="#a1" /></app><note type="footnote"
+						>Hier hat angeblich der Verfasser des Manuskriptes, das dem Druck zu Grunde liegt, auch die Reaktion Ecks – er lächelte oder lachelte – registriert. </note></p></x:expect>
+		</x:scenario>
+		<x:scenario label="T2.9: mit lb im Lemma">
+			<x:context>
+				<p>
+					<lb/>hactenus ecclesiam defendit, et quis te vita defuncto <anchor type="crit_app" xml:id="s1"/>tuebitur? 
+					<lb/>quod<anchor type="crit_app" xml:id="s1e"/><span type="crit_app" from="#s1" to="#s1e"> <orig>tuebituro quod</orig> B, C.</span> vix audent Imperatores mundi, audacter subit audaculus
+					<lb/>imperator Theologorum. Si mihi <expan>D<ex>ominus</ex></expan> <rs type="person"><!--TODO ref nachtragen-->Ioannes</rs> persuadere vales,
+				</p>
+			</x:context>
+			<x:expect label="lem mit lb">
+				<p>
+					<lb/>hactenus ecclesiam defendit, et quis te vita defuncto <app><lem>tuebitur? 
+					<lb/>quod</lem><rdg wit="#B #C">tuebituro quod</rdg></app> vix audent Imperatores mundi, audacter subit audaculus
+					<lb/>imperator Theologorum. Si mihi <expan>D<ex>ominus</ex></expan> <rs type="person"><!--TODO ref nachtragen-->Ioannes</rs> persuadere vales,
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.10: span mit vielen rdg (ex: LD)">
+			<x:context>
+				<p>hec talenta <expan>b<ex>eatus</ex></expan> quoque <rs type="person"><!--TODO ref nachtragen--><expan>Hila<ex>rius</ex></expan></rs> testatur intelligi <lb/>merita iustorum.<note type="footnote">Vgl. Hil. in Matth. 27,6-9, hier vor allem 27,7: <quote>Cui quinque talenta. - Sed servus ille, qui quinque talenta accepit, populus ex lege credentium est: ex qua profectus, meritum ipsius recte probeque perfuncta evangelicae fidei operatione duplicavit. In ratione autem ponenda iudicii examen est, quo coelestis verbi usus, et reditus dispensati talenti postulatur.</quote> (PL 9, 1061f. hier vor allem 1061).</note> <anchor type="crit_app" xml:id="s29"/>de .3. ergo. diximus.<anchor type="crit_app" xml:id="s29e"/>
+					<span type="crit_app" from="#s29" to="#s29e"> <orig>4to</orig> a<hi rend="sub">1</hi><wdb:marker/> <orig>Ad 4tum</orig> a<hi rend="sub">2</hi> AuRd-Gl<wdb:marker/> <orig>Ad quartum &lt;..&gt; 4°</orig> A<hi rend="sub">5Lp</hi> AuRd-Gl </span> <rs type="person"><!--TODO ref nachtragen-->Augustinum</rs>
+					<note type="footnote">Vgl. Anm. <ptr type="wdb" target="#n6"/>.</note></p>
+			</x:context>
+			<x:expect label="lem/rdg">
+				<p>hec talenta <expan>b<ex>eatus</ex></expan> quoque <rs type="person"><!--TODO ref nachtragen--><expan>Hila<ex>rius</ex></expan></rs> testatur intelligi <lb/>merita iustorum.<note type="footnote">Vgl. Hil. in Matth. 27,6-9, hier vor allem 27,7: <quote>Cui quinque talenta. - Sed servus ille, qui quinque talenta accepit, populus ex lege credentium est: ex qua profectus, meritum ipsius recte probeque perfuncta evangelicae fidei operatione duplicavit. In ratione autem ponenda iudicii examen est, quo coelestis verbi usus, et reditus dispensati talenti postulatur.</quote> (PL 9, 1061f. hier vor allem 1061).</note> <app><lem>de .3. ergo. diximus.</lem>
+					<rdg wit="#a1">4to</rdg> <rdg wit="#a2" rend="AuRd-Gl">Ad 4tum</rdg> <rdg wit="#A5Lp" rend="AuRd-Gl">Ad quartum &lt;..&gt; 4°</rdg></app> <rs type="person"><!--TODO ref nachtragen-->Augustinum</rs>
+					<note type="footnote">Vgl. Anm. <ptr type="wdb" target="#n6"/>.</note></p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.11">
+			<x:context>
+				<p>peccatorum decordatione<note type="crit_app">A<hi rend="sub">Os</hi><wdb:marker /> <orig>retractatione</orig> A</note> versatur, in </p>
+			</x:context>
+			<x:expect label="app">
+				<p>peccatorum <app><lem wit="#AOs">decordatione</lem><rdg wit="#A">retractatione</rdg></app> versatur, in </p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T2.12: Text hinzugefügt in witness">
+			<x:context>
+				<p>comparari<note type="crit_app">hinzugefügt am Rand  <orig>Eckius omnia</orig> A<hi rend="sub">5-L</hi></note></p>
+			</x:context>
+			<x:expect label="rdg/add">
+				<p>comparari<app><lem /><rdg wit="#A5-L"><add place="margin">Eckius omnia</add></rdg></app></p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T3: fehlt">
+		<x:context>
+			<p>boni consulas.<note type="crit_app">fehlt a<hi rend="sub">1</hi></note></p>
+		</x:context>
+		<x:expect label="del">
+			<p>boni <app><lem>consulas.</lem><rdg wit="#a1"/></app></p>
+		</x:expect>
+	</x:scenario>
+	<x:scenario label="T3.2:">
+		<x:context>
+			<p>IHESUS.<note type="crit_app">fehlt B<hi rend="sub">1</hi>, B<hi rend="sub">2</hi>, C, D, E, F</note></p>
+		</x:context>
+		<x:expect label="kein Komma">
+			<p><app><lem>IHESUS.</lem><rdg wit="#B1 #B2 #C #D #E #F" /></app></p>
+		</x:expect>
+	</x:scenario>
+	
+	<x:scenario label="T4: gestrichen">
+		<x:scenario label="T4.1: danach gestrichen">
+			<x:context>
+				<item>Lex<note type="crit_app">Danach gestrichen<orig> factorum</orig></note> fidei bonorum operum et factorum<note type="footnote">Die Gleichsetzung von <hi style="font-style: italic;">factorum</hi> mit <hi style="font-style: italic;">operum</hi> hat <rs type="person">Karlstadt</rs> aus <ref type="medieval">Aug. spir. et litt.</ref> 13,21 (s. o. Anm. <ptr type="wdb" target="#n2"/>) entnommen. Vgl. auch <ref type="biblical" cRef="Rm 3,27f">Röm 3,27f</ref>. (s. o. Anm. <ptr type="wdb" target="#n1"/>).</note> est genitrix. non tamen dicitur factorum licet eiusmodi censeri possit:</item>
+			</x:context>
+			<x:expect label="del mit @place='after'">
+				<item>Lex<del place="after">factorum</del> fidei bonorum operum et factorum<note type="footnote">Die Gleichsetzung von <hi style="font-style: italic;">factorum</hi> mit <hi style="font-style: italic;">operum</hi> hat <rs type="person">Karlstadt</rs> aus <ref type="medieval">Aug. spir. et litt.</ref> 13,21 (s. o. Anm. <ptr type="wdb" target="#n2"/>) entnommen. Vgl. auch <ref type="biblical" cRef="Rm 3,27f">Röm 3,27f</ref>. (s. o. Anm. <ptr type="wdb" target="#n1"/>).</note> est genitrix. non tamen dicitur factorum licet eiusmodi censeri possit:</item>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T4.2: gestrichen mit mehr Text dazu">
+			<x:context>
+				<p>
+					opus bonum.<note type="crit_app">durchgestrichen und  <orig>opus bonum</orig> über der Zeile hinzugefüt A<hi rend="sub">5Lp</hi></note>
+				</p>
+			</x:context>
+			<x:expect label="unverändert">
+				<p>opus bonum.<note type="crit_app">durchgestrichen und  <orig>opus bonum</orig> über der Zeile hinzugefüt A<hi rend="sub">5Lp</hi></note>
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T4.3: hinzugefügt und gestrichen">
+			<x:context>
+				<p>
+					quod<note type="crit_app"> <orig>quibus</orig> A<hi rend="sub">1-5</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> durchgestrichen und am Rand hsl. hinzugefügt  <orig>quod</orig> A<hi rend="sub">5Lp</hi></note>
+				</p>
+			</x:context>
+			<x:expect label="unverändert">
+				<p>quod<note type="crit_app"> <orig>quibus</orig> A<hi rend="sub">1-5</hi>;  durchgestrichen und am Rand hsl. hinzugefügt  <orig>quod</orig> A<hi rend="sub">5Lp</hi></note>
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T4.4: gestrichen in einigen Zeugen">
+			<x:context>
+				<p>ei<note type="crit_app">gestrichen A<hi rend="sub">5-L</hi>, A<hi rend="sub">5-Br</hi></note></p>
+			</x:context>
+			<x:expect label="rdg/del">
+				<p><app><lem>ei</lem><rdg wit="#A5-L #A5-Br"><del>ei</del></rdg></app></p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T5: Korrekturen">
+		<x:scenario label="T5.1: einmal vom Editor verbessert für">
+			<x:context>
+				<p>
+					<lb/>auszlegen/ unnd<note type="crit_app">vom Editor verbessert für<orig> unud</orig></note> durch die schrifft beweyszen/ Das alle
+				</p>
+			</x:context>
+			<x:expect label="sic und corr">
+				<p>
+					<lb/>auszlegen/ <choice><sic>unud</sic><corr>unnd</corr></choice> durch die schrifft beweyszen/ Das alle
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T5.2: vom Editor verbessert für mit note">
+			<x:context>
+				<item>Lex factorum dicitur. sicut lucus a lucendo:<note type="crit_app">Vom Editor
+					verbessert für <orig>lucando:</orig>
+					<note type="comment">Kolde, Disputationsthesen, 471, ändert stillschweigend in
+						<orig>non lucendo.</orig></note></note><note
+							type="footnote">Hinter <quote>lucus a lucendo</quote> steht die etymologische
+							Herleitung des Wortes <hi style="font-style: italic;">lucus</hi> (Wald) von <hi
+								style="font-style: italic;">lucere</hi> (leuchten), die u. a. <rs type="person"
+									><!--TODO ref nachtragen-->Quint.</rs><ref type="medieval"> inst. orat. </ref>1,6,34
+							wiedergibt: <quote>etiamne a contrariis aliqua sinemus trahi, ut ‘lucus‘, quia umbra
+								opacus parum luceat […]?</quote> (<bibl ref="#">Winterbottom, Quintiliani, Bd. 1,
+									47,8f</bibl>.) Diese volksetymologische Ableitung einer Wortbedeutung (<hi
+										style="font-style: italic;">lucus</hi> / dunkler Wald) vom Gegenteil <hi
+											style="font-style: italic;">(lucere</hi> / hell leuchten), enthält einen logischen
+							Widerspruch. Was <rs type="person"><!--TODO ref nachtragen-->Karlstadt</rs> meint,
+							wenn er die Phrase <quote>lex factorum</quote> mit der Herleitung <quote>lucus a
+								lucendo</quote> vergleicht, ergibt sich in Verbindung mit These 6 und 7: Die
+							Formulierung <quote>Gesetz der Taten</quote> enthält insofern einen inneren
+							Widerspruch, als die guten Taten bzw. Werke von jenem Gesetz eben nicht bewirkt
+							werden, sondern vom <quote>Gesetz des Glaubens</quote> (Th. 7), weshalb dieses auch
+							als ein <quote>geistliches Gesetz der Taten</quote> (Th. 6) bezeichnet werden
+							könne.</note></item>
+			</x:context>
+			<x:expect label="choice, sic mit note, corr">
+				<item>Lex factorum dicitur. sicut lucus a <choice><sic>lucando:<note type="comment">Kolde, Disputationsthesen, 471, ändert stillschweigend in
+						<orig>non lucendo.</orig></note></sic><corr>lucendo:</corr></choice><note
+							type="footnote">Hinter <quote>lucus a lucendo</quote> steht die etymologische
+							Herleitung des Wortes <hi style="font-style: italic;">lucus</hi> (Wald) von <hi style="font-style: italic;">lucere</hi> (leuchten), die u. a. <rs type="person"
+									><!--TODO ref nachtragen-->Quint.</rs><ref type="medieval"> inst. orat. </ref>1,6,34
+							wiedergibt: <quote>etiamne a contrariis aliqua sinemus trahi, ut ‘lucus‘, quia umbra
+								opacus parum luceat […]?</quote> (<bibl ref="#">Winterbottom, Quintiliani, Bd. 1,
+									47,8f</bibl>.) Diese volksetymologische Ableitung einer Wortbedeutung (<hi style="font-style: italic;">lucus</hi> / dunkler Wald) vom Gegenteil <hi style="font-style: italic;">(lucere</hi> / hell leuchten), enthält einen logischen
+							Widerspruch. Was <rs type="person"><!--TODO ref nachtragen-->Karlstadt</rs> meint,
+							wenn er die Phrase <quote>lex factorum</quote> mit der Herleitung <quote>lucus a
+								lucendo</quote> vergleicht, ergibt sich in Verbindung mit These 6 und 7: Die
+							Formulierung <quote>Gesetz der Taten</quote> enthält insofern einen inneren
+							Widerspruch, als die guten Taten bzw. Werke von jenem Gesetz eben nicht bewirkt
+							werden, sondern vom <quote>Gesetz des Glaubens</quote> (Th. 7), weshalb dieses auch
+							als ein <quote>geistliches Gesetz der Taten</quote> (Th. 6) bezeichnet werden
+							könne.</note></item>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T5.3: Korrektur mit Kommentar">
+			<x:context>
+				<p>
+					<lb/><anchor type="crit_app" xml:id="s116"/>dogmatibus c. 44.<anchor type="crit_app" xml:id="s116e"/><span type="crit_app" from="#s116" to="#s116e">vom Editor verbessert für <orig>documentis 43</orig> a<hi rend="sub">1</hi>, A<hi rend="sub">1-5</hi> <note type="comment">– im Anschluss an hsl. Korrektur in A<hi rend="sub">5Lp</hi></note></span>
+				</p>
+			</x:context>
+			<x:expect label="sic mit comment">
+				<p>
+					<lb/><choice><sic wit="#a1 #A1-5">documentis 43<note type="comment">– im Anschluss an hsl. Korrektur in A<hi rend="sub">5Lp</hi></note></sic><corr>dogmatibus c. 44.</corr></choice>
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T5.4: hsl. Korrektur in Quelle">
+			<x:context>
+				<p>
+					Ego<note type="crit_app"> <orig>Dico</orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>Ego</orig> hsl. am Rand ersetzt durch <orig>de</orig> A<hi rend="sub">5Lp</hi></note>
+				</p>
+			</x:context>
+			<x:expect label="rdg corr">
+				<p>Ego<note type="crit_app"> <orig>Dico</orig> a<hi rend="sub">1</hi>; <orig>Ego</orig> hsl. am Rand ersetzt durch <orig>de</orig> A<hi rend="sub">5Lp</hi></note>
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T5.5: vom Editor korrigiert für mit Quelle">
+			<x:context>
+				<note place="margin">&lt;i.<note type="crit_app">vom Editor verbessert für <orig>Reg. ii.</orig> A</note>&gt;Reg. ii. </note>
+			</x:context>
+			<x:expect label="rdg mit sic">
+				<note place="margin"><app><lem>&lt;i.</lem><rdg wit="#A"><sic>Reg. ii.</sic></rdg></app>&gt;Reg. ii. </note>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T6: gemischte">
+		<x:scenario label="T6.1: rdg mit Hinzufügungen">
+			<x:context>
+				<p>meritorium A quo<note type="crit_app"> <orig>ad hoc</orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  durchgestrichen  <orig>ut <gap/></orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> folgt  <orig>aii</orig> a<hi rend="sub">1</hi></note> dependent</p>
+			</x:context>
+			<x:expect label="app?">
+				<p>meritorium A <app>
+					<lem>quo</lem>
+					<rdg wit="#a1">ad hoc</rdg>
+					<rdg wit="#a1"><del>ut <gap /></del></rdg>
+					<rdg wit="#a1"><add>aii</add></rdg>
+				</app> dependent</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T6.2: mehrere note incl. comment">
+			<x:context>
+				<p>est. Nisi<note type="crit_app">folgt ein Wort durchgestrichen a<hi rend="sub">1</hi></note> sanctissimum<note type="crit_app"> <orig>sactissimum</orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>sanctissimum</orig> a<hi rend="sub">2</hi> <note type="comment">korrigiert</note></note> in Christo</p>
+			</x:context>
+			<x:expect label="gemischt" xml:space="preserve"><p>est. Nisi<note type="crit_app">folgt ein Wort durchgestrichen a<hi rend="sub">1</hi></note>  <app><lem>sanctissimum</lem><rdg wit="#a1">sactissimum</rdg><rdg wit="#a2">sanctissimum<note type="comment">korrigiert</note></rdg></app> in Christo</p></x:expect>
+		</x:scenario>
+		<x:scenario label="T6.3: mehrere in Marginaline">
+			<x:context>
+				<p><note place="margin">Ad hec dixit <rs type="person"><!--TODO ref nachtragen-->Eccius</rs><note type="crit_app"> <orig>Eckius</orig> A<hi rend="sub">5</hi></note>  se legisse  antequam Theognis  nasceretur<note type="crit_app">hinzugefügt a<hi rend="sub">3</hi> AuRd-Gl</note><note type="footnote">Vermutlich hat <rs type="person"><!--TODO ref nachtragen-->Karlstadt</rs> dieses Zitat <ref type="medieval">Gell. 1,3,18-19</ref> entnommen. Später finded es sich auch bei <rs type="person"><!--TODO ref nachtragen-->Erasmus</rs>, <hi style="font-style: italic;">Adagia</hi>, letzte Ausgabe (1533): <ref type="medieval">Erasmus, Adag. 3300</ref>: »Hoc noveram priusquam« (<bibl ref="#asd_1969"> II-7, 183f.</bibl>).</note></note>
+					<lb/>Secundo</p>
+			</x:context>
+			<x:expect label="add">
+				<p><note place="margin">Ad hec dixit <rs type="person"><!--TODO ref nachtragen--><app><lem>Eccius</lem><rdg wit="#A5">Eckius</rdg></app></rs> se legisse antequam Theognis <add wit="#a3" place="AuRd-Gl">nasceretur</add><note type="footnote">Vermutlich hat <rs type="person"><!--TODO ref nachtragen-->Karlstadt</rs> dieses Zitat <ref type="medieval">Gell. 1,3,18-19</ref> entnommen. Später finded es sich auch bei <rs type="person"><!--TODO ref nachtragen-->Erasmus</rs>, <hi style="font-style: italic;">Adagia</hi>, letzte Ausgabe (1533): <ref type="medieval">Erasmus, Adag. 3300</ref>: »Hoc noveram priusquam« (<bibl ref="#asd_1969"> II-7, 183f.</bibl>).</note></note>
+					<lb/>Secundo</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T6.4: mehrere rdg und manuelles">
+			<x:context>
+				<p>Nam per<note type="crit_app"> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>super</orig> über der Zeilehinzugefügt a<hi rend="sub">3</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>super</orig> A<hi rend="sub">1-5</hi> <wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>hsl. korrigiert in  <orig>per</orig> A<hi rend="sub">5Lp</hi></note> hec talenta</p>
+			</x:context>
+			<x:expect label=".">
+				<p>Nam <app><lem wit="#a1">per</lem><rdg wit="#a3"><add place="supralinear">super</add></rdg><rdg wit="#A1-5">super</rdg><rdg wit="#A5Lp" cause="manualCorrection">per</rdg></app> hec talenta</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T6.5: FN zwischen anchor">
+			<x:context>
+				<p><lb/><anchor type="crit_app" xml:id="s2"/>Protestatio<note type="footnote" xml:id="n2"
+					>Hier im Sinn von <hi style="font-style: italic;">Bedingung</hi>, als vorsorglichen
+					Rechtsanspruch; vgl. EE126_text_Anm1.</note> Carolostadii per respondentem<note
+						type="footnote">Die Name des Respondenten ist nicht bekannt.</note> sibi a latere<anchor
+							type="crit_app" xml:id="s2e"/><span type="crit_app" from="#s2" to="#s2e">
+								<orig>Protestatio <expan>D<ex>omini</ex></expan> doctoris Carolostadii per respondentem sibi a latere</orig>
+								B<wdb:marker /> fehlt a<hi rend="sub">1</hi><wdb:marker/> <orig>Protestatio Carolostad<supplied>ius</supplied></orig>
+								a<hi rend="sub">2 </hi>AuRd-Gl</span></p>
+			</x:context>
+			<x:expect label="geordneter content">
+				<p><lb/><app><lem>Protestatio<note type="footnote" xml:id="n2"
+					>Hier im Sinn von <hi style="font-style: italic;">Bedingung</hi>, als vorsorglichen
+					Rechtsanspruch; vgl. EE126_text_Anm1.</note> Carolostadii per respondentem<note
+						type="footnote">Die Name des Respondenten ist nicht bekannt.</note> sibi a latere</lem>
+								<rdg wit="#B">Protestatio <expan>D<ex>omini</ex></expan> doctoris Carolostadii per respondentem sibi a latere</rdg>
+								<rdg wit="#a1" />
+								<rdg wit="#a2" rend="AuRd-Gl">Protestatio Carolostad<supplied>ius</supplied></rdg></app></p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T6.6: Trennung vor, Expansion zwischen anchor">
+			<x:context>
+				<p>ob<lb/>inductas <anchor
+					type="crit_app" xml:id="s117"/>per <expan>Cypri<ex>anum</ex></expan><anchor type="crit_app"
+						xml:id="s117e"/><span type="crit_app" from="#s117" to="#s117e">
+							<orig>Cypriani</orig> a<hi rend="sub">1</hi></span> auctoritates<supplied>.</supplied>
+					ex .2.</p>
+			</x:context>
+			<x:expect label="guten anchor">
+				<p>ob<lb/>inductas <app>
+					<lem>per <expan>Cypri<ex>anum</ex></expan></lem>
+					<rdg wit="#a1">Cypriani</rdg>
+				</app> auctoritates<supplied>.</supplied>
+					ex .2.</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T6.7: gemischte mit rdg und add">
+			<x:context>
+				<p><w>Ca<lb break="no"/>tholica</w> <anchor type="crit_app" xml:id="s3"/>ad latum digitum<anchor type="crit_app" xml:id="s3e"/><span type="crit_app" from="#s3" to="#s3e"> <orig>ac pontificum</orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>potestate</orig> hinzugefügta<hi rend="sub">1</hi> <note type="comment">über der Zeile</note><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>in impressis exemplaribus ad latum d<supplied>igitum</supplied></orig> a<hi rend="sub">3</hi> AuRd-Gl</span> nos velle</p>
+			</x:context>
+			<x:expect label="add mit place">
+				<p><w>Ca<lb break="no"/>tholica</w> <app><lem>ad latum digitum</lem><rdg wit="#a1">ac pontificum</rdg><rdg wit="#a1"><add place="supralinear">potestate</add></rdg><rdg wit="#a3" rend="AuRd-Gl">in impressis exemplaribus ad latum d<supplied>igitum</supplied></rdg></app> nos velle</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T6.8: choice in lem produzieren">
+			<x:context>
+				<p>propositio 7.<note type="crit_app">vom Editor verbessert für <orig>14</orig><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>11</orig> über der Zeile hinzugefügt a<hi rend="sub">1 </hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>7</orig> a<hi rend="sub">3</hi> InRd-Gl</note></p>
+			</x:context>
+			<x:expect label="app/lem/choice/sic">
+				<p>propositio <app><lem><choice><sic>14</sic><corr>7.</corr></choice></lem> <rdg wit="#a1"><add
+					place="supralinear">11</add></rdg><rdg wit="#a3" rend="InRd-Gl">7</rdg></app>
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T6.9: ">
+			<x:context>
+				<p>oppositum sit<note type="crit_app">durchgestrichen  <orig>quam</orig> a<hi rend="sub">1</hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>sum</orig> über der Zeile hinzugefügt a<hi rend="sub">3 </hi><wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> korrigiert in  <orig>sit</orig> a<hi rend="sub">2</hi></note> plane</p>
+			</x:context>
+			<x:expect label="eine krit. Anm.">
+				<p>oppositum <app><lem>sit</lem><rdg wit="#a1"><del>quam</del></rdg><rdg wit="#a3"><add
+					place="supralinear">sum</add></rdg><rdg cause="correction" wit="#a2">sit</rdg></app> plane</p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T7: nicht umsetzbare">
+		<x:scenario label="T7.1: beibehalten, wenn keine Phrase">
+			<x:context>
+				<list>
+					<label>I.<note type="crit_app">in arabischen Ziffern in B, C.</note>
+					</label>
+					<item> Cum <expan>D<ex>ominus</ex></expan> <rs type="person"><!--TODO ref eintragen--><expan>Ioan<ex>nes</ex></expan></rs> d inficiatur<note type="crit_app"><orig> iuficiatur </orig>B.</note> omnem omnium fidelium vitam esse<lb/>poenitentiam, aut poenitudinis indigam.<note type="footnote">Vgl. KGK I.2, Nr. 88, S. 879, Z. 22-31 und KGK I.2, Nr. 90, S. 910, Z. 3-7.</note> Iudaeus est, sub<lb/>Christiana pelle, occlamans, si iustus dei filius est?<note type="crit_app">A, B<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/><orig> est, </orig>D<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/><orig> est: </orig>C, E, F, H, G</note> <w>descen<lb break="no"/>dat</w> de Cruce<note type="footnote">Vgl. <ref type="biblical" cRef="Mt 27,41-43">Mt 27,41-43</ref>.</note>, nescitque hanc vitam, diem crucis perferendae.<note type="footnote">Vgl. KGK I.2, Nr. 90, S. 929, Z. 21-S. 931, Z. 27.</note> 
+					</item>
+				</list>
+			</x:context>
+			<x:expect label="1. crit_app ident. übernommen">
+				<list>
+					<label>I.<note type="crit_app">in arabischen Ziffern in B, C.</note></label>
+					<item> Cum <expan>D<ex>ominus</ex></expan>
+						<rs type="person"><!--TODO ref eintragen--><expan>Ioan<ex>nes</ex></expan></rs> d <app>
+							<lem>inficiatur</lem>
+							<rdg wit="#B">iuficiatur</rdg></app> omnem omnium fidelium vitam esse<lb/>poenitentiam, aut poenitudinis indigam.<note type="footnote">Vgl. KGK I.2, Nr. 88, S. 879, Z. 22-31 und KGK I.2, Nr. 90, S. 910, Z. 3-7.</note> Iudaeus est, sub<lb/>Christiana pelle, occlamans, si iustus dei filius <app>
+								<lem wit="#A #B">est?</lem>
+								<rdg wit="#D">est,</rdg>
+								<rdg wit="#C #E #F #H #G">est:</rdg></app>
+						<w>descen<lb break="no"/>dat</w> de Cruce<note type="footnote">Vgl. <ref type="biblical" cRef="Mt 27,41-43">Mt 27,41-43</ref>.</note>, nescitque hanc vitam, diem crucis perferendae.<note type="footnote">Vgl. KGK I.2, Nr. 90, S. 929, Z. 21-S. 931, Z. 27.</note> 
+					</item>
+				</list>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T7.2: freier Text nach Witness in rdg">
+			<x:context>
+				<p>qua <w>mag<lb break="no"/>nificis</w><note type="crit_app">E, F Marginalie <orig>: Eccius oblique in Lutherium scripsit</orig></note></p>
+			</x:context>
+			<x:expect label="note">
+				<p>qua <w>mag<lb break="no"/>nificis<note type="crit_app">E, F Marginalie <orig>: Eccius oblique in Lutherium scripsit</orig></note></w></p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T7.3: Viel Text vor orig">
+			<x:context>
+				<p>
+					<lb/>Text
+					<lb/><pb n="[21]"/> <anchor type="crit_app" xml:id="s1"/>Conclusiones duodecim de legis non furtum facies<note type="footnote">Wortlaut nach <ref type="biblical" cRef="Ex 20,15">Ex 20,15</ref>; <ref type="biblical" cRef="Lk 18,20">Lk 18,20</ref>.</note>/ impletione et testamentorum legatione altarium<note type="crit_app"> <orig>altatium</orig> von Gottschalk verbessert B</note>/ et missarum fundatione<anchor type="crit_app" xml:id="s1e"/><span type="crit_app" from="#s1" to="#s1e">Im Inhaltsverzeichnis von A, pag. 2, lautet der Titel: <orig>xii Pulchre conclusiones de impletione legis/ non furtum facies/ de testamentorum legatione et altarium aut missarum fundatione</orig> Entsprechend in B</span>.</p>
+			</x:context>
+			<x:expect label="app unverändert">
+				<p>
+					<lb/>Text
+					<lb/><pb n="[21]"/> <anchor type="crit_app" xml:id="s1"/>Conclusiones duodecim de legis non furtum facies<note type="footnote">Wortlaut nach <ref type="biblical" cRef="Ex 20,15">Ex 20,15</ref>; <ref type="biblical" cRef="Lk 18,20">Lk 18,20</ref>.</note>/ impletione et testamentorum legatione altarium<note type="crit_app"> <orig>altatium</orig> von Gottschalk verbessert B</note>/ et missarum fundatione<anchor type="crit_app" xml:id="s1e"/><span type="crit_app" from="#s1" to="#s1e">Im Inhaltsverzeichnis von A, pag. 2, lautet der Titel: <orig>xii Pulchre conclusiones de impletione legis/ non furtum facies/ de testamentorum legatione et altarium aut missarum fundatione</orig> Entsprechend in B</span>.</p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T8: Elemente vorher">
+		<x:scenario label="T8.1: w als Lemma">
+			<x:context>
+				<p> <w>ha<lb break="no"/>bere</w><note type="crit_app"> <orig>haberi</orig> B</note> volumus<supplied>.</supplied></p>
+			</x:context>
+			<x:expect label="w in lem">
+				<p> <w><app><lem>ha<lb break="no"/>bere</lem><rdg wit="#B">haberi</rdg></app></w> volumus<supplied>.</supplied></p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T8.2: FN vorher">
+			<x:context>
+				<p><lb/>καλλιπαρηος και λευκωλενος<note type="footnote" xml:id="n3"><rs type="person"><!--TODO ref eintragen!-->Luther</rs> bezeichnet <rs type="person"><!--TODO ref eintragen!-->Eck</rs> mit zwei Beinamen, die aus der Ilias entnommen sind und jeweils auf <rs type="person"><!--TODO ref eintragen!-->Chryseis</rs> (mit schönen Wangen = καλλιπάρῃος) und auf <rs type="person"><!--TODO ref eintragen!-->Hera/Juno</rs> (mit weißen Ellenbogen = λευκώλενος) verweisen; vgl. <ref type="medieval">Hom. Il. 1,145 und 596</ref>. Das Interesse am Werk <rs type="person"><!--TODO ref eintragen!-->Homers </rs>war in jener Zeit in <rs type="place"><!--TODO ref eintragen!-->Wittenberg </rs>anschein groß. Im Wintersemester 1518/19 hielt <rs type="person"><!--TODO ref eintragen!-->Philipp Melanchthon</rs> zusammen mit <rs type="person"><!--TODO ref eintragen!-->Johannes Rhagius Aesticampianus</rs> eine Vorlesung über <rs type="person"><!--TODO ref eintragen!-->Homers</rs> Ilias, in der er den Text ausführlich behandelte; am 3.4.1519 sandte er sogar eine Nachschrift des Textes an <rs type="person"><!--TODO ref eintragen!-->Johannes Lang</rs> (siehe <bibl ref="#mbw"> 1, 117,22-24 Nr. 50</bibl>). Auch <rs type="person"><!--TODO ref eintragen!-->Luther</rs> zeigte in dieser Zeit ein verstärktes Interesse an <rs type="person"><!--TODO ref eintragen!-->Homer</rs> und zitierte er den klassischen Autor (u.a. in den <hi style="font-style: italic;">Operationes in Psalmos</hi>). In demselben Jahr schenkte <rs type="person"><!--TODO ref eintragen!-->Luther</rs> dem jungen Professor <rs type="person"><!--TODO ref eintragen!-->Melanchthon</rs> eine in <rs type="place"><!--TODO ref eintragen!-->Venedig</rs> bei <rs type="person"><!--TODO ref eintragen!-->Manutius</rs> erschienene Homerausgabe (vgl. <bibl ref="#wa_b"> 3, 51, Anm. 7 Nr. 596</bibl>; es handelt sich vermutlich um das Exemplar, das heute in der Cambridge University Library, mit der Signatur Adv.d.13.4 aufbewahrt wird); auch <rs type="person"><!--TODO ref eintragen!-->Melanchthon</rs> schenkte <rs type="person"><!--TODO ref eintragen!-->Luther</rs> ein weiteres Exemplar einer Aldinischen Homerausgabe – vermutlich mit Notizen aus seiner Vorlesung (das Exemplar befindet sich heute in der Columbia University Library, New York, mit der Signatur PLIMPTON 880 1517 H37 c.1 und c.2; siehe <bibl ref="#wa_b"> 13, 55 (Nachtrag zu WA.B 3, S. 51, Anm. 7)</bibl>; siehe dazu <bibl ref="#dippelt_verdeutschung_1941">, 316f.</bibl> und <bibl ref="#volz_melanchthon_1954">, 228</bibl>). </note><note type="crit_app">A, C<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>fehlt</orig> B<hi rend="sub">1</hi>, B<hi rend="sub">2</hi>, D</note> persona, tum quod ingenium tuum et</p>
+			</x:context>
+			<x:expect label="unverändert">
+				<p><lb/>καλλιπαρηος και λευκωλενος<note type="footnote" xml:id="n3"><rs type="person"><!--TODO ref eintragen!-->Luther</rs> bezeichnet <rs type="person"><!--TODO ref eintragen!-->Eck</rs> mit zwei Beinamen, die aus der Ilias entnommen sind und jeweils auf <rs type="person"><!--TODO ref eintragen!-->Chryseis</rs> (mit schönen Wangen = καλλιπάρῃος) und auf <rs type="person"><!--TODO ref eintragen!-->Hera/Juno</rs> (mit weißen Ellenbogen = λευκώλενος) verweisen; vgl. <ref type="medieval">Hom. Il. 1,145 und 596</ref>. Das Interesse am Werk <rs type="person"><!--TODO ref eintragen!-->Homers </rs>war in jener Zeit in <rs type="place"><!--TODO ref eintragen!-->Wittenberg </rs>anschein groß. Im Wintersemester 1518/19 hielt <rs type="person"><!--TODO ref eintragen!-->Philipp Melanchthon</rs> zusammen mit <rs type="person"><!--TODO ref eintragen!-->Johannes Rhagius Aesticampianus</rs> eine Vorlesung über <rs type="person"><!--TODO ref eintragen!-->Homers</rs> Ilias, in der er den Text ausführlich behandelte; am 3.4.1519 sandte er sogar eine Nachschrift des Textes an <rs type="person"><!--TODO ref eintragen!-->Johannes Lang</rs> (siehe <bibl ref="#mbw"> 1, 117,22-24 Nr. 50</bibl>). Auch <rs type="person"><!--TODO ref eintragen!-->Luther</rs> zeigte in dieser Zeit ein verstärktes Interesse an <rs type="person"><!--TODO ref eintragen!-->Homer</rs> und zitierte er den klassischen Autor (u.a. in den <hi style="font-style: italic;">Operationes in Psalmos</hi>). In demselben Jahr schenkte <rs type="person"><!--TODO ref eintragen!-->Luther</rs> dem jungen Professor <rs type="person"><!--TODO ref eintragen!-->Melanchthon</rs> eine in <rs type="place"><!--TODO ref eintragen!-->Venedig</rs> bei <rs type="person"><!--TODO ref eintragen!-->Manutius</rs> erschienene Homerausgabe (vgl. <bibl ref="#wa_b"> 3, 51, Anm. 7 Nr. 596</bibl>; es handelt sich vermutlich um das Exemplar, das heute in der Cambridge University Library, mit der Signatur Adv.d.13.4 aufbewahrt wird); auch <rs type="person"><!--TODO ref eintragen!-->Melanchthon</rs> schenkte <rs type="person"><!--TODO ref eintragen!-->Luther</rs> ein weiteres Exemplar einer Aldinischen Homerausgabe – vermutlich mit Notizen aus seiner Vorlesung (das Exemplar befindet sich heute in der Columbia University Library, New York, mit der Signatur PLIMPTON 880 1517 H37 c.1 und c.2; siehe <bibl ref="#wa_b"> 13, 55 (Nachtrag zu WA.B 3, S. 51, Anm. 7)</bibl>; siehe dazu <bibl ref="#dippelt_verdeutschung_1941">, 316f.</bibl> und <bibl ref="#volz_melanchthon_1954">, 228</bibl>). </note><note type="crit_app">A, C; <orig>fehlt</orig> B<hi rend="sub">1</hi>, B<hi rend="sub">2</hi>, D</note> persona, tum quod ingenium tuum et</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T8.3: rs">
+			<x:context>
+				<p><rs type="person"><!--TODO ref eintragen!-->Andreae Bodenstein Carlstadio</rs><note type="crit_app">A<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>Andree Bodenstein Carlstadio</orig> B<hi rend="sub">1</hi><hi rend="sub">,</hi> B<hi rend="sub">2</hi><hi rend="sub">, </hi>D<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>Andreae Bodensteyn Carelostadio</orig> C, E<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/>  <orig>Andreae Bodenstein Carelostadio</orig> F</note></p>
+			</x:context>
+			<x:expect label="Leerzeichen vor app">
+				<p><rs type="person"><!--TODO ref eintragen!-->Andreae Bodenstein <app><lem wit="#A">Carlstadio</lem><rdg wit="#B1 #B2 #D">Andree Bodenstein Carlstadio</rdg><rdg wit="#C #E">Andreae Bodensteyn Carelostadio</rdg><rdg wit="#F">Andreae Bodenstein Carelostadio</rdg></app></rs></p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T8.4: lb">
+			<x:context>
+				<p>
+					<lb/><note type="crit_app"> <orig>:</orig> A<hi rend="sub">1</hi>, A<hi rend="sub">5</hi>, A<hi rend="sub">7</hi></note>quod extremum
+				</p>
+			</x:context>
+			<x:expect label="ident">
+				<p>
+					<lb/><app><lem /><rdg wit="#A1 #A5 #A7">:</rdg></app>quod extremum
+				</p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T9: add">
+		<x:scenario label="T9.1: in Vorlage hinzugefügt">
+			<x:context>
+				<p><lb/>Doctor<note type="crit_app">hinzugefügt am Rand</note> zuhalten</p>
+			</x:context>
+			<x:expect label="add">
+				<p><lb/><add place="margin">Doctor</add> zuhalten</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T9.2: hinzugefügt mit zusätzlichem Text und orig">
+			<x:context>
+				<p>
+					<anchor type="crit_app" xml:id="s22"/>diversis
+					<lb/>temporibus<anchor type="crit_app" xml:id="s22e"/><span type="crit_app" from="#s22"
+						to="#s22e"> <orig>diversis diversis et</orig> a<hi rend="sub">1</hi><wdb:marker
+							xmlns:wdb="https://github.com/dariok/wdbplus"/> hinzugefügt  <orig>precepta</orig> über das zweite <orig>diversis</orig> a<hi rend="sub">2</hi><wdb:marker
+							xmlns:wdb="https://github.com/dariok/wdbplus"/> <orig>temporibus</orig> nach dem ersten <orig>diversis</orig> am Rand hinzugefügt a<hi
+							rend="sub">3</hi></span> varia
+				</p>
+			</x:context>
+			<x:expect label="span mit ;">
+				<p>
+					<anchor type="crit_app" xml:id="s22"/>diversis
+					<lb/>temporibus<anchor type="crit_app" xml:id="s22e"/><span type="crit_app" from="#s22"
+						to="#s22e"> <orig>diversis diversis et</orig> a<hi rend="sub">1</hi>;  hinzugefügt  <orig>precepta</orig> über das zweite <orig>diversis</orig> a<hi
+						rend="sub">2</hi>; <orig>temporibus</orig> nach dem ersten <orig>diversis</orig> am Rand hinzugefügt a<hi rend="sub">3</hi></span> varia
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T9.3: schwieriger Text im orig">
+			<x:context>
+				<p>
+					Et<note type="crit_app"> <orig>Pro secundo Et</orig> a<hi rend="sub">1</hi><wdb:marker
+						xmlns:wdb="https://github.com/dariok/wdbplus"/> am Rand hsl. hinzugefügt <orig>Pro 2°</orig> A<hi
+						rend="sub">5Lp</hi></note>
+				</p>
+			</x:context>
+			<x:expect label="nicht zuviel im wit">
+				<p>
+					<app><lem>Et</lem><rdg wit="#a1">Pro secundo Et</rdg><rdg wit="#A5Lp"><add
+						place="margin">Pro 2°</add></rdg></app>
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T9.4: Korrektuverzeichnis">
+			<x:context>
+				<p>sensum et<note type="crit_app">B<wdb:marker xmlns:wdb="https://github.com/dariok/wdbplus"/> hinzugefügt Korrekturverzeichnis A, A<hi rend="sub">5-L</hi>, A<hi rend="sub">5-Br</hi></note> discrepantium</p>
+			</x:context>
+			<x:expect label="add mit @place">
+				<p>sensum <app><lem wit="#B">et</lem><rdg wit="#A #A5-L #A5-Br"><add place="corr">et</add></rdg></app> discrepantium</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T9.5: über der Zeile hinzugefügt">
+			<x:context>
+				<p>
+					ad opus bonum et <note type="crit_app"> <orig>opus</orig> über der Zeile hinzugefügt a<hi rend="sub">2</hi></note> meritorium
+				</p>
+			</x:context>
+			<x:expect label="alleinstehendes add">
+				<p>ad opus bonum et<app><lem/><rdg wit="#a2"><add place="supralinear">opus</add></rdg></app> meritorium
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T9.6: hsl. längerer Text in einem Zeugen">
+			<x:context>
+				<p><anchor type="crit_app" xml:id="s6"/>a deo<anchor type="crit_app" xml:id="s6e"/><span type="crit_app" from="#s6" to="#s6e">handschriftlich hinzugefügt A<hi rend="sub">5-L</hi>, A<hi rend="sub">5-Br</hi></span></p>
+			</x:context>
+			<x:expect label="add">
+				<p><add wit="#A5-L #A5-Br" type="manual">a deo</add></p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T10: Normalfall">
+		<x:scenario label="T10.1: rs zwischen anchor Ende und Anfang">
+			<x:context>
+				<p><anchor type="crit_app" xml:id="s1"/> Doctor Archidiacon<anchor type="crit_app" xml:id="s1e"/><span from="#s1" to="#s1e" type="crit_app">am Rand hinzugefügt</span><note type="footnote">Seit 1510 war <rs type="person"><!--TODO ref eintragen!-->Karlstadt</rs> Archidiakon am <rs type="place"><!--TODO ref eintragen!-->Wittenberger Allerheiligenstift</rs>. Vgl. KGK I.1, Nr. 49, S. 437 Anm. 5.</note>
+					<lb/>angesuecht<note type="footnote">Siehe EE100.</note>, unnd mit vleyß unnderthenigklich gepeten hat, Ine sampt denIhenen, 
+					<lb/>so er mit sich, auff schirstkunfftige<note type="footnote">nächstkommend; vgl. <bibl
+						ref="#grimm_woerterbuch_1854"> 9, 19-21</bibl> (schier).</note> Disputacion, welhe Er zu <rs type="place"
+						><!--TODO ref eintragen!-->Leiptzk</rs>, wyder<note type="crit_app">folgt gestriche <orig>doctor <gap
+						/> Eck</orig></note> her<note type="crit_app">über der Zeile hinzugefügt</note> <anchor type="crit_app"
+						xml:id="s2"/>Iohann Eckius<anchor type="crit_app" xml:id="s2e"/><span type="crit_app" from="#s2"
+						to="#s2e">am Rand hinzugefügt</span> </p>
+			</x:context>
+			<x:expect label="rs beibehalten" xml:space="preserve"><p><add place="margin"> Doctor Archidiacon</add><note
+				type="footnote">Seit 1510 war <rs type="person"><!--TODO ref eintragen!-->Karlstadt</rs> Archidiakon am <rs
+				type="place"><!--TODO ref eintragen!-->Wittenberger Allerheiligenstift</rs
+				>. Vgl. KGK I.1, Nr. 49, S. 437 Anm. 5.</note><lb/>angesuecht<note type="footnote">Siehe EE100.</note
+				>, unnd mit vleyß unnderthenigklich gepeten hat, Ine sampt denIhenen, 
+					<lb/>so er mit sich, auff schirstkunfftige<note type="footnote">nächstkommend; vgl. <bibl
+						ref="#grimm_woerterbuch_1854"> 9, 19-21</bibl> (schier).</note> Disputacion, welhe Er zu <rs
+						type="place"><!--TODO ref eintragen!-->Leiptzk</rs>, wyder<add><del>doctor <gap/> Eck</del></add>  <add
+							place="supralinear">her</add><add place="margin">Iohann Eckius</add></p></x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T11: Gruppierung">
+		<x:scenario label="T11.1">
+			<x:context>
+				<div>
+					<head>asdf</head>
+					<p>asdf</p>
+					<p>asdf</p>
+					<head>asfd</head>
+					<p>asdf</p>
+				</div>
+			</x:context>
+			<x:expect label="div/div">
+				<div>
+					<div><head>asdf</head>
+					<p>asdf</p>
+					<p>asdf</p></div>
+					<div><head>asfd</head>
+					<p>asdf</p></div>
+				</div>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T12">
+		<x:scenario label="T12.1: s000">
+			<x:context>
+				<p>
+					comprehendunt. ╠ <anchor xml:id="s002"/>Tertius est <rs type="person"><!--TODO ref eintragen!-->Salomon</rs>
+					<lb/>tres libros habens. Prover'bia' quae illi parabolas<anchor xml:id="s002e"/>, idest
+				</p>
+			</x:context>
+			<x:expect label=".">
+				<p>
+					comprehendunt. ╠ <anchor xml:id="s002"/>Tertius est <rs type="person"><!--TODO ref eintragen!-->Salomon</rs>
+					<lb/>tres libros habens. Prover'bia' quae illi parabolas<anchor xml:id="s002e"/>, idest
+				</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T12.2: q000">
+			<x:context>
+				<p>
+					<lb/><anchor xml:id="q001"/>Repurgantur quoque vitiosae orationes<anchor xml:id="q001e"/></p>
+			</x:context>
+			<x:expect label=".">
+				<p>
+					<lb/><anchor xml:id="q001"/>Repurgantur quoque vitiosae orationes<anchor xml:id="q001e"/></p>
+			</x:expect>
+		</x:scenario>
+	</x:scenario>
+</x:description>

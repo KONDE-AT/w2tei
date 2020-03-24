@@ -1,267 +1,793 @@
-<?xml version="1.0" encoding="UTF-8"?><html xmlns:test="http://www.jenitennison.com/xslt/unit-test" xmlns="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="UTF-8"?><html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <title>Test Report for C:/Users/kampkaspar/workspace/W2TEI/add/trans-4.xsl (passed:13 / pending:0 / failed:1 / total:14)</title>
-      <link rel="stylesheet" type="text/css" href="file:/C:/Users/kampkaspar/.p2/pool/plugins/com.oxygenxml.editor_19.1.0.v2018022209/frameworks/xspec/src/reporter/test-report.css" />
+      <title>Test Report for /home/dario/git/w2tei/add/trans-4.xsl (passed: 19 / pending: 0 / failed: 0 / total: 19)</title>
+      <style type="text/css">/****************************************************************************/
+/*  File:       test-report.css                                             */
+/*  Author:     Jeni Tennison                                               */
+/*  Tags:                                                                   */
+/*    Copyright (c) 2008, 2010 Jeni Tennison (see end of file.)             */
+/* ------------------------------------------------------------------------ */
+
+
+/* test */
+
+/* box model */
+
+body {
+	margin-right: 5%;
+	margin-left: 5%;
+	}
+
+h1 {
+	padding: 0.3em 0.5em 0.3em 0.5em;
+	position: relative;
+	}
+
+h2 {
+	padding: 0.1em 0.5em 0.2em 0.5em;
+	}
+
+h3 {
+	padding-left: 0.6em;
+	}
+
+h4 {
+	padding-left: 0.8em;
+	}
+
+p, table {
+	margin-left: 5%;
+	}
+
+dd ul, dd ol {
+	margin-left: 0%;
+	}
+
+li ul, li ol {
+	margin-left: 5%;
+	}
+
+dl, ul, ol, blockquote {
+	margin-left: 10%;
+	}
+
+dt {
+  padding-top: 3px;
+  padding-bottom: 3px;
+	clear: both;
+	}
+
+dd p {
+	margin-left: -5px;
+	margin-top: 5px;
+	clear: both;
+	}
+
+p.link {
+	margin-top: 4px;
+	margin-bottom: 0px;
+	clear: both;
+	}
+
+tr td, td p, li, li p {
+	margin-left: 0%;
+	}
+
+td {
+	padding-right: 5%;
+	}
+
+.link img, dt img {
+	vertical-align: middle;
+	position: relative;
+	top: -5px;
+	}
+
+img {
+	position: relative;
+	}
+
+#xml-link {
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	width: 10%;
+	margin-left: 0%;
+	}
+
+#link-up {
+	position: absolute;
+	left: 93%;
+	right: 2em;
+	top: 0.3em;
+	}
+
+#link-top {
+	position: absolute;
+	left: 89%;
+	right: 4em;
+	top: 0.3em;
+	}
+	
+.popup {
+	display: block;
+	visibility: hidden;
+	float: right;
+	position: absolute;
+	top: 5px;
+	left: -200px;
+	z-index: 1;
+	padding: 0.3em;
+	width: 220px;
+	}
+
+.note {
+	position: relative;
+	}
+
+.post {
+	margin-left: 5%;
+	padding-top: 1em;
+	}
+	
+.example, .sidebar {
+  margin-left: 5%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  }
+
+pre {
+	padding-left: 5%;
+	margin-left: 5%;
+	}
+
+dd pre, li pre {
+	padding-left: 5%;
+	}
+
+/* fonts */
+body {
+	font-family: sans-serif;
+	font-size: small;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+	}
+
+h1 {
+	font-size: 173%;
+	font-weight: bold;
+	}
+
+h2 {
+	font-size: 144%;
+	font-weight: bold;
+	}
+
+h3 {
+	font-size: 120%;
+	font-weight: normal;
+	}
+
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+}
+
+dt {
+	font-weight: bold;
+	}
+
+a:link, a:visited, a:active, a:hover {
+	font-weight: bold;
+	}
+
+a.offsite:link, a.offsite:visited, a.offsite:active, a.offsite:hover {
+	font-weight: normal;
+	}
+
+/* suppress the normal italics */
+address {
+	font-style: normal;
+	}
+
+div.example, .sidebar {
+  font-family: sans-serif;
+  font-size: 100%;
+  }
+
+
+.note, .link {
+	font-family: sans-serif;
+	font-size: 83%;
+	}
+
+.example, .string, .rtf, .code, pre, code {
+	font-family: monospace;
+  font-size: 83%;
+	}
+
+.boolean {
+	font-style: italic;
+	}
+
+#colophon, #xml-link {
+	font-size: 69%;
+	}
+
+.question, .title {
+	font-weight: bold;
+	}
+
+/* colours */
+body {
+	background-color: white;
+	color: black;
+	border: 0px none black;
+	}
+
+/* this is to make Navigator fill the entire line */
+h1, h2 {
+	border: 1px solid white;
+	width: auto;
+	}
+
+h1 {
+	background: #606;
+	color: #6F6;
+	}
+
+h2 {
+	color: #606;
+	background: #CFC;
+	}
+
+hr {
+	color: #606;
+	background: white;
+	}
+
+img, a:link img, a:visited img, a:hover img, a:active img, #link-up img, #link-top img {
+	border: 0px none white;
+	background: transparent;
+	}
+
+a:link {
+	color: #636;
+	background: transparent;
+	border: 0px none white;
+	}
+
+a:visited {
+	color: #606;
+	background: transparent;
+	border: 0px none white;
+	}
+
+a:active {
+	color: #6F6;
+	background: #606;
+	border: 0px none white;
+	}
+
+a:hover {
+	color: #636;
+	background: #9F9;
+	border: 0px none white;
+	}
+
+a.img:hover, a.img:active {
+	background: transparent;
+	}
+
+#colophon, #xml-link, .note {
+	color: #666;
+	}
+
+#colophon a:link, #colophon a:visited, #colophon a:hover,
+#xml-link a:link, #xml-link a:visited, #xml-link a:hover,
+.note a:link, .note a:visited, .note a:hover {
+	color: #969;
+	background: transparent;
+	}
+
+#colophon a:hover, #xml-link a:hover, .note a:hover {
+	background: #CFC;
+	color: #969;
+	}
+
+.popup {
+	background: white;
+	border: 1px solid #606;
+	}
+
+.post {
+	border-top: 2px solid #606;
+	}
+	
+.example {
+  border-top: 2px solid #606;
+  border-bottom: 2px solid #606;
+  }
+  
+.sidebar {
+  border-top: 2px solid #090;
+  border-bottom: 2px solid #090;
+  }
+  
+.rng {
+  border-left: 2px solid #666;
+  }
+
+.same {
+  background-color: rgb(206, 239, 174);
+}
+
+.inner-diff {
+  background-color: rgba(255, 204, 204, .4);
+}
+
+.diff {
+  background-color: #FCC;
+}
+
+.whitespace {
+	/*font-style: italic;*/
+	color: #999;
+	/*background: white;*/
+}
+
+.ellipsis {
+	color: #999;
+}
+
+.ignored {
+  font-style: italic;
+  color: #999;
+  background: white;
+}
+
+.hit {
+}
+
+.missed {
+  background-color: #A33;
+  color: white;
+}
+
+/* text */
+ol ol li {
+	list-style: lower-alpha;
+	}
+
+td {
+	vertical-align: top;
+	}
+
+h1 {
+	text-transform: uppercase;
+	}
+
+.question {
+	text-indent: -33px;
+	}
+
+.byline {
+	text-align: right;
+	}
+
+#link-top, #link-up {
+	text-align: right;
+	}
+
+a {
+	text-decoration: none;
+	}
+
+body > h2:first-of-type {
+    background: inherit;
+    margin-bottom: 0;
+}
+
+table { width: 95%;
+        /* border: collapse; */ }
+
+th { text-align: left; }
+
+th.totals { text-align: center; font-weight: normal; }
+
+div > table > tbody > tr > th:first-child {
+    font-weight:bold;
+    color: #474747;
+}
+
+.xspec tbody th { font-weight: normal; font-size: 0.8em; border-top: 1px #666 solid; }
+.xspec tbody td { font-size: 0.8em; color: #262626; }
+
+.successful { background-color: #CFC; }
+.pending { background-color: #EEE; color: #666; }
+.failed { background-color: #FCC; }
+
+.successful td:first-child:before, 
+body > table:first-of-type tr.successful th:first-child:before
+{ 
+margin-right: 5px; 
+
+/* optimized version of ../../graphics/success12.png */
+content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAABcUlEQVR42m1SPUsDQRB9661BIoEQDBqJnRhE1BD8CP4AgwhWEbQIKIhi6Q/QwspCtBBs/CBG1Fb9AWK0iBosLCQgYmGQEFARRUguezfuLeZygsWbmZ037zEMyxZ2W0IgHBIoIjPoF6q2QQYIWVlPcxmS3mYt4vFpjmEpd4pNaJ9vRvS9ILa57Aw2ejUYBtVcTdsZPnc7Qk0juNQ3QC/o55JkhnAO19wDnjAmIkkcZBMwBVmci1uEoR5Od4K73o94eAuZpx3kX+9U35TgVjAqVWdmZUWOhldQrnwhnduEELD7dVYhdMJY9zom+/ZAgqOnNY7OQAynt0sol3TFSyiRWklUCKXyN8Jt40gM7SPo68VDIY1c/ly5KlBtJaU+vlmEpyGArmBMkiZOrpdV3yFQ4PJBkmBkCqTO5jE3fITixyOei/dy0L5aVSjY7Jo/w10sqnFmn9VU+e+ZhW7BvGAzq/4O2UiBMCBJRv9/DyHDFQFTPwI/IlPYPLYnAAAAAElFTkSuQmCC')
+}
+
+.failed td:first-child:before,
+body > table:first-of-type tr.failed th:first-child:before
+{ 
+margin-right: 5px; 
+
+/* optimized version of ../../graphics/fail12.png */
+content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAjVBMVEWDKBSQLBadMBidMBiSLBWSLRaLKhWCKBOZLheHKRT//////v3ivLPgt67dsafhraLfqJvcopXQl4vNkoTKjH3RbljKaVO8aVaxYlCsUDylUDusOh+wNxu0OBu4ORy7OhzAOx3EPB2rNRqnNBqjMhifMRidMBeaLxeXLhaULRaRLBaOKxWLKhWIKRSFKBRkN75PAAAACnRSTlP7+c3Hx8TIwicknixbQAAAAIZJREFUeNoNwsEKgkAUBdD77jzSXKhDuEpyURBE//8h0SratQuKRK3QsdccjqTjDgLEV9VpPSEyYHPjVtFb9LYQKNYPrVk7fOyAfdMUWRnX9VHFLO9GJB4ClR8wxyIQYmGveZmGu1BUJFjm5fHtShDM8xVZFZ4nXtQVjDxd4hbPytGRPLf8A/K/MGOep8atAAAAAElFTkSuQmCC')
+}
+
+.pending td:first-child:before,
+body > table:first-of-type tr.pending th:first-child:before
+{
+margin-right: 5px; 
+
+/* optimized version of ../../graphics/pending12.png */
+content:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAt1BMVEVgYGBZWVldXV1gYGBjY2NmZmZnZ2dnZ2diYmJfX19dXV1hYWFZWVlYWFhiYmJeXl5YWFhoaGj6+vr39/fz8/Py8vLv7+/p6enk5OR9fX18fHx7e3t6enp5eXl4eHh3d3d2dnZ1dXV0dHRzc3NycnJxcXFwcHBvb29ubm5tbW1sbGxra2tqamppaWloaGhnZ2dmZmZlZWVkZGRjY2NiYmJhYWFfX19eXl5dXV1cXFxbW1taWlpZWVl0CTiLAAAAEnRSTlP++/75/P7Nx8fHyMTBwygmIycZZx20AAAAdElEQVR42jWKvQ4BURSEzzdzED+NQiFRaCWi4f1rhcor2EZl2RDdcq+YyUzyZYb5c0MUn3PIaPUKKk4aBgsqfHPRVpLl0nuFbbkKoe7te5ftw0jue4OJFIeOn4KZsNN26SB28Z9OHi+RJUTePL0263LMY5sfIzMU3HCY7dEAAAAASUVORK5CYII=')
+}
+
+
+
+.xspecResult { width: 95%; table-layout: fixed; }
+
+.xspecResult td,
+.xspecResult th { width: 50%; }
+
+.xspecResult pre { 
+  margin-left: 0; 
+  padding: 0.5em; 
+  overflow: auto; 
+  border: 1px #999 dotted;
+}
+
+span.scenario-totals {float: right; text-align: right}
+
+/* highlight the link target */
+*:target {
+	box-shadow: -0.5rem 0 0 0 #FC511D;
+}
+
+/* ------------------------------------------------------------------------ */
+/*  DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS COMMENT.               */
+/*                                                                          */
+/*  Copyright (c) 2008, 2010 Jeni Tennison                                  */
+/*                                                                          */
+/*  The contents of this file are subject to the MIT License (see the URI   */
+/*  http://www.opensource.org/licenses/mit-license.php for details).        */
+/*                                                                          */
+/*  Permission is hereby granted, free of charge, to any person obtaining   */
+/*  a copy of this software and associated documentation files (the         */
+/*  "Software"), to deal in the Software without restriction, including     */
+/*  without limitation the rights to use, copy, modify, merge, publish,     */
+/*  distribute, sublicense, and/or sell copies of the Software, and to      */
+/*  permit persons to whom the Software is furnished to do so, subject to   */
+/*  the following conditions:                                               */
+/*                                                                          */
+/*  The above copyright notice and this permission notice shall be          */
+/*  included in all copies or substantial portions of the Software.         */
+/*                                                                          */
+/*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,         */
+/*  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF      */
+/*  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  */
+/*  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY    */
+/*  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,    */
+/*  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE       */
+/*  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                  */
+/* ------------------------------------------------------------------------ */
+</style>
    </head>
    <body>
       <h1>Test Report</h1>
-      <p xmlns:oxy="http://www.oxygenxml.com/xslt/xspec">Stylesheet: <a href="file:/C:/Users/kampkaspar/workspace/W2TEI/add/trans-4.xsl">C:/Users/kampkaspar/workspace/W2TEI/add/trans-4.xsl</a></p>
-      <p xmlns:oxy="http://www.oxygenxml.com/xslt/xspec">Tested: 20 März 2018 at 21:22</p>
-      <h2 xmlns:oxy="http://www.oxygenxml.com/xslt/xspec">Contents</h2>
-      <table xmlns:oxy="http://www.oxygenxml.com/xslt/xspec" class="xspec">
-         <col width="80%" />
-         <col width="5%" />
-         <col width="5%" />
-         <col width="5%" />
-         <col width="5%" />
+      <p>Stylesheet: <a href="file:/home/dario/git/w2tei/add/trans-4.xsl">/home/dario/git/w2tei/add/trans-4.xsl</a></p>
+      <p>XSpec: <a href="file:/home/dario/git/w2tei/add/trans-4.xspec">/home/dario/git/w2tei/add/trans-4.xspec</a></p>
+      <p>Tested: 24 March 2020 at 00:39</p>
+      <h2>Contents</h2>
+      <table class="xspec">
+         <colgroup>
+            <col style="width:75%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+            <col style="width:6.25%" />
+         </colgroup>
          <thead>
             <tr>
                <th></th>
-               <th class="result">passed:13</th>
-               <th class="result">pending:0</th>
-               <th class="result">failed:1</th>
-               <th class="result">total:14</th>
+               <th class="totals">passed: 19</th>
+               <th class="totals">pending: 0</th>
+               <th class="totals">failed: 0</th>
+               <th class="totals">total: 19</th>
             </tr>
          </thead>
          <tbody>
-            <tr class="failed">
-               <th><a href="#d4e4">krit. Anmerkungen</a></th>
-               <th class="result">8</th>
-               <th class="result">0</th>
-               <th class="result">1</th>
-               <th class="result">9</th>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e4">T1: Ersetzungen</a></th>
+               <th class="totals">2</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">2</th>
             </tr>
             <tr class="successful">
-               <th><a href="#d4e1167">text vor krit. FN</a></th>
-               <th class="result">1</th>
-               <th class="result">0</th>
-               <th class="result">0</th>
-               <th class="result">1</th>
+               <th><a href="#top-level-scenario-d5e78">T2: bibl ergänzen</a></th>
+               <th class="totals">3</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">3</th>
             </tr>
             <tr class="successful">
-               <th><a href="#d4e1224">Expansionen</a></th>
-               <th class="result">1</th>
-               <th class="result">0</th>
-               <th class="result">0</th>
-               <th class="result">1</th>
+               <th><a href="#top-level-scenario-d5e230">rs mit ref ergänzen</a></th>
+               <th class="totals">4</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">4</th>
             </tr>
             <tr class="successful">
-               <th><a href="#d4e1293">span/anchor</a></th>
-               <th class="result">2</th>
-               <th class="result">0</th>
-               <th class="result">0</th>
-               <th class="result">2</th>
+               <th><a href="#top-level-scenario-d5e388">krit. und FN gemischt</a></th>
+               <th class="totals">1</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
             </tr>
             <tr class="successful">
-               <th><a href="#d4e1453">bibl mit abbr eränzen</a></th>
-               <th class="result">1</th>
-               <th class="result">0</th>
-               <th class="result">0</th>
-               <th class="result">1</th>
+               <th><a href="#top-level-scenario-d5e548">T4: orig zusammenziehen</a></th>
+               <th class="totals">1</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
+            </tr>
+            <tr class="successful">
+               <th><a href="#top-level-scenario-d5e598">T5: Ende von FN</a></th>
+               <th class="totals">8</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">8</th>
             </tr>
          </tbody>
       </table>
-      <div xmlns:oxy="http://www.oxygenxml.com/xslt/xspec" id="d4e4">
-         <h2 class="successful">krit. Anmerkungen<span class="scenario-totals">passed:8 / pending:0 / failed:1 / total:9</span></h2>
-         <table class="xspec" id="t-d4e4">
-            <col width="80%" />
-            <col width="20%" />
+      <div id="top-level-scenario-d5e4">
+         <h2 class="successful">T1: Ersetzungen<span class="scenario-totals">passed: 2 / pending: 0 / failed: 0 / total: 2</span></h2>
+         <table class="xspec" id="t-d5e4">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
             <tbody>
                <tr class="successful">
-                  <th>krit. Anmerkungen</th>
-                  <th>passed:8 / pending:0 / failed:1 / total:9</th>
+                  <th>T1: Ersetzungen</th>
+                  <th>passed: 2 / pending: 0 / failed: 0 / total: 2</th>
                </tr>
-               <tr class="successful">
-                  <th>einmal vom Editor verbessert für</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>sic und corr</td>
-                  <td>Success</td>
-               </tr>
-               <tr class="successful">
-                  <th>lem und rdg</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>lem und rdg</td>
-                  <td>Success</td>
-               </tr>
-               <tr class="successful">
-                  <th>mehrere rdg</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>lem, 2rdg</td>
-                  <td>Success</td>
-               </tr>
-               <tr class="failed">
-                  <th><a href="#d4e241">orig im Text herstellen</a></th>
-                  <th>passed:0 / pending:0 / failed:1 / total:1</th>
-               </tr>
-               <tr class="failed">
-                  <td><a href="#d4e394">orig</a></td>
-                  <td>Failure</td>
-               </tr>
-               <tr class="successful">
-                  <th>danach gestrichen</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>del mit Leerzeichen vorne</td>
-                  <td>Success</td>
-               </tr>
-               <tr class="successful">
-                  <th>mehrere Zeugen im rdg</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>wit mit mehreren</td>
-                  <td>Success</td>
-               </tr>
-               <tr class="successful">
-                  <th>beibehalten, wenn keine Phrase</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>1. crit_app ident. übernommen</td>
-                  <td>Success</td>
-               </tr>
-               <tr class="successful">
-                  <th>mit tiefgest.</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>G_1</td>
-                  <td>Success</td>
-               </tr>
-               <tr class="successful">
-                  <th>rdg mit Kommentar</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>comment mit orig im rdf</td>
-                  <td>Success</td>
-               </tr>
-            </tbody>
-         </table>
-         <h3 id="d4e241">krit. Anmerkungen orig im Text herstellen</h3>
-         <h4 id="d4e394">orig</h4>
-         <table class="xspecResult">
-            <thead>
-               <tr>
-                  <th>Result</th>
-                  <th>Expected Result</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <td><pre>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="diff">item</span> xmlns="http://www.tei-c.org/ns/1.0"
-         xmlns:tei="http://www.tei-c.org/ns/1.0"
-         xmlns:wdb="https://github.com/dariok/wdbplus"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Lex factorum dicitur. sicut lucus a </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">choice</span>&gt;
-      &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">sic</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucando:</span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">note</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="comment"&gt;
-            &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">bibl</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Kolde, 471</span>&lt;/bibl&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">, ändert stillschweigend in</span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">orig</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> non lucendo.</span>&lt;/orig&gt;
-         &lt;/note&gt;
-      &lt;/sic&gt;
-      &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">corr</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucendo:</span>&lt;/corr&gt;
-   &lt;/choice&gt;
-   &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="diff">note</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="footnote"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Hinter </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucus a lucendo</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> steht die etymologische Herleitung des Wortes </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">l</span>&lt;/hi&gt;
-      &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">ucus</span>&lt;/hi&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (Wald) von </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucere</span>&lt;/hi&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (leuchten), die u. a. </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">rs</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="person"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Quint.</span>&lt;/rs&gt;
-      &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">ref</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="medieval"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> inst. orat. </span>&lt;/ref&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">1,6,34 wiedergibt: </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">etiamne a contrariis aliqua sinemus trahi, ut ‘lucus‘, quia umbra opacus parum luceat […]?</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (</span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="diff">bibl</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="diff">ref</span>="#neuber_fremdheit_2000"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Winterbottom, Quintiliani, Bd. 1, 47,8f</span>&lt;/bibl&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">.) Diese volksetymologische Ableitung einer Wortbedeutung (</span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucus</span>&lt;/hi&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> / dunkler Wald) vom Gegenteil </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">(lucere</span>&lt;/hi&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> / hell leuchten), enthält einen logischen Widerspruch. Was </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">rs</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="person"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Karlstadt</span>&lt;/rs&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> meint, wenn er die Phrase </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lex factorum</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> mit der Herleitung </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucus a lucendo</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> vergleicht, ergibt sich in Verbindung mit These 6 und 7: Die Formulierung </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Gesetz der Taten</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> enthält insofern einen inneren Widerspruch, als die guten Taten bzw. Werke von jenem Gesetz eben nicht bewirkt werden, sondern vom </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Gesetz des Glaubens</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (Th. 7), weshalb dieses auch als ein </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">geistliches Gesetz der Taten</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (Th. 6) bezeichnet werden könne.</span>&lt;/note&gt;
-&lt;/item&gt;</pre></td>
-                  <td><pre>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="diff">item</span> xmlns="http://www.tei-c.org/ns/1.0"
-         xmlns:tei="http://www.tei-c.org/ns/1.0"
-         xmlns:wdb="https://github.com/dariok/wdbplus"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Lex factorum dicitur. sicut lucus a </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">choice</span>&gt;
-      &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">sic</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucando:</span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">note</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="comment"&gt;
-            &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">bibl</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Kolde, 471</span>&lt;/bibl&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">, ändert stillschweigend in</span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">orig</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> non lucendo.</span>&lt;/orig&gt;
-         &lt;/note&gt;
-      &lt;/sic&gt;
-      &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">corr</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucendo:</span>&lt;/corr&gt;
-   &lt;/choice&gt;
-   &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="diff">note</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="footnote"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Hinter </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucus a lucendo</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> steht die etymologische Herleitung des Wortes </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">l</span>&lt;/hi&gt;
-      &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">ucus</span>&lt;/hi&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (Wald) von </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucere</span>&lt;/hi&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (leuchten), die u. a. </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">rs</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="person"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Quint.</span>&lt;/rs&gt;
-      &lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">ref</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="medieval"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> inst. orat. </span>&lt;/ref&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">1,6,34 wiedergibt: </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">etiamne a contrariis aliqua sinemus trahi, ut ‘lucus‘, quia umbra opacus parum luceat […]?</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (</span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="diff">bibl</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="diff">ref</span>="#"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Winterbottom, Quintiliani, Bd. 1, 47,8f</span>&lt;/bibl&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">.) Diese volksetymologische Ableitung einer Wortbedeutung (</span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucus</span>&lt;/hi&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> / dunkler Wald) vom Gegenteil </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">hi</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">style</span>="font-style: italic;"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">(lucere</span>&lt;/hi&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> / hell leuchten), enthält einen logischen Widerspruch. Was </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">rs</span> <span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">type</span>="person"&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Karlstadt</span>&lt;/rs&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> meint, wenn er die Phrase </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lex factorum</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> mit der Herleitung </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">lucus a lucendo</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> vergleicht, ergibt sich in Verbindung mit These 6 und 7: Die Formulierung </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Gesetz der Taten</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> enthält insofern einen inneren Widerspruch, als die guten Taten bzw. Werke von jenem Gesetz eben nicht bewirkt werden, sondern vom </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">Gesetz des Glaubens</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (Th. 7), weshalb dieses auch als ein </span>&lt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">quote</span>&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same">geistliches Gesetz der Taten</span>&lt;/quote&gt;<span xmlns:x="http://www.jenitennison.com/xslt/xspec" xmlns:pkg="http://expath.org/ns/pkg" class="same"> (Th. 6) bezeichnet werden könne.</span>&lt;/note&gt;
-&lt;/item&gt;</pre></td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-      <div xmlns:oxy="http://www.oxygenxml.com/xslt/xspec" id="d4e1167">
-         <h2 class="successful">text vor krit. FN<span class="scenario-totals">passed:1 / pending:0 / failed:0 / total:1</span></h2>
-         <table class="xspec" id="t-d4e1167">
-            <col width="80%" />
-            <col width="20%" />
-            <tbody>
-               <tr class="successful">
-                  <th>text vor krit. FN</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>Spatium</td>
-                  <td>Success</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-      <div xmlns:oxy="http://www.oxygenxml.com/xslt/xspec" id="d4e1224">
-         <h2 class="successful">Expansionen<span class="scenario-totals">passed:1 / pending:0 / failed:0 / total:1</span></h2>
-         <table class="xspec" id="t-d4e1224">
-            <col width="80%" />
-            <col width="20%" />
-            <tbody>
                <tr class="successful">
                   <th>Expansionen</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
                </tr>
                <tr class="successful">
-                  <td>expan/ex</td>
+                  <td>ex</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T1.2: supplied und gap</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>gap ... supplied</td>
                   <td>Success</td>
                </tr>
             </tbody>
          </table>
       </div>
-      <div xmlns:oxy="http://www.oxygenxml.com/xslt/xspec" id="d4e1293">
-         <h2 class="successful">span/anchor<span class="scenario-totals">passed:2 / pending:0 / failed:0 / total:2</span></h2>
-         <table class="xspec" id="t-d4e1293">
-            <col width="80%" />
-            <col width="20%" />
+      <div id="top-level-scenario-d5e78">
+         <h2 class="successful">T2: bibl ergänzen<span class="scenario-totals">passed: 3 / pending: 0 / failed: 0 / total: 3</span></h2>
+         <table class="xspec" id="t-d5e78">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
             <tbody>
                <tr class="successful">
-                  <th>span/anchor</th>
-                  <th>passed:2 / pending:0 / failed:0 / total:2</th>
+                  <th>T2: bibl ergänzen</th>
+                  <th>passed: 3 / pending: 0 / failed: 0 / total: 3</th>
                </tr>
                <tr class="successful">
-                  <th>einfach</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>span vor anchor</td>
-                  <td>Success</td>
-               </tr>
-               <tr class="successful">
-                  <th>mit lb</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
-               </tr>
-               <tr class="successful">
-                  <td>app lem rdg</td>
-                  <td>Success</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-      <div xmlns:oxy="http://www.oxygenxml.com/xslt/xspec" id="d4e1453">
-         <h2 class="successful">bibl mit abbr eränzen<span class="scenario-totals">passed:1 / pending:0 / failed:0 / total:1</span></h2>
-         <table class="xspec" id="t-d4e1453">
-            <col width="80%" />
-            <col width="20%" />
-            <tbody>
-               <tr class="successful">
-                  <th>bibl mit abbr eränzen</th>
-                  <th>passed:1 / pending:0 / failed:0 / total:1</th>
+                  <th>T2.1: bibl mit abbr eränzen</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
                </tr>
                <tr class="successful">
                   <td>@ref</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T2.2: nichts gefunden</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>kein @ref</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T2.3: mehrere Angaben in einem bibl</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>.</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e230">
+         <h2 class="successful">rs mit ref ergänzen<span class="scenario-totals">passed: 4 / pending: 0 / failed: 0 / total: 4</span></h2>
+         <table class="xspec" id="t-d5e230">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>rs mit ref ergänzen</th>
+                  <th>passed: 4 / pending: 0 / failed: 0 / total: 4</th>
+               </tr>
+               <tr class="successful">
+                  <th>Personen</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>@ref</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>Orte</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>@ref</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T3.3: mit Expansion</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>ref</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T3.4: Verwechselungsmöglichkeiten</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>hieronymus</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e388">
+         <h2 class="successful">krit. und FN gemischt<span class="scenario-totals">passed: 1 / pending: 0 / failed: 0 / total: 1</span></h2>
+         <table class="xspec" id="t-d5e388">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>krit. und FN gemischt</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <th>103, p6</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>geordneter content</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e548">
+         <h2 class="successful">T4: orig zusammenziehen<span class="scenario-totals">passed: 1 / pending: 0 / failed: 0 / total: 1</span></h2>
+         <table class="xspec" id="t-d5e548">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>T4: orig zusammenziehen</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>ein orig</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="top-level-scenario-d5e598">
+         <h2 class="successful">T5: Ende von FN<span class="scenario-totals">passed: 8 / pending: 0 / failed: 0 / total: 8</span></h2>
+         <table class="xspec" id="t-d5e598">
+            <colgroup>
+               <col style="width:75%" />
+               <col style="width:25%" />
+            </colgroup>
+            <tbody>
+               <tr class="successful">
+                  <th>T5: Ende von FN</th>
+                  <th>passed: 8 / pending: 0 / failed: 0 / total: 8</th>
+               </tr>
+               <tr class="successful">
+                  <th>T5.1: Spatium</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>ohne</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T5.2: Punkt ergänzen</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>ohne</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T5.3: Element ohne Punkt am Ende</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>Punkt</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T5.4: Klammer am Ende</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>Punkt</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T5.6: gap</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>Punkt</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T5.7: gap</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>Punkt</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T5.8: gap</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>Punkt</td>
+                  <td>Success</td>
+               </tr>
+               <tr class="successful">
+                  <th>T5.9: gap</th>
+                  <th>passed: 1 / pending: 0 / failed: 0 / total: 1</th>
+               </tr>
+               <tr class="successful">
+                  <td>Punkt</td>
                   <td>Success</td>
                </tr>
             </tbody>

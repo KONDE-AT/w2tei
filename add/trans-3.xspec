@@ -74,33 +74,122 @@
 				<lb/>heldet. Nu die weil er die schrifft gar umb keret/ so sollen
 			</x:expect>
 		</x:scenario>
+		<x:scenario label="geteiltes rs">
+			<x:context xml:space="preserve">
+				<p>dehinc Quod b'eatus' <rs type="person"><!--TODO ref eintragen-->Hiero</rs><rs type="person"><!--TODO ref eintragen-->'</rs><rs type="person">ny</rs><rs type="person"><!--TODO ref eintragen-->mus</rs><rs type="person"><!--TODO ref eintragen-->'</rs> ad</p>
+			</x:context>
+			<x:expect label="ein rs" xml:space="preserve">
+				<p>dehinc Quod b'eatus' <rs type="person">Hiero'nymus'</rs> ad</p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="rs vorher zusammengezogen">
+			<x:context xml:space="preserve">
+				<p><rs type="place">Augu<note place="margin"><rs type="person">Caietanus</rs> satis benignus <rs type="person">Lutherii</rs> paedagogus <rs type="place">Augustae</rs>.<note type="crit_app"> <hi style="font-style: italic;">fehlt B, C</hi></note></note><lb/>stae</rs></p>
+			</x:context>
+			<x:expect label="unverändert" xml:space="preserve">
+				<p><rs type="place">Augu<note place="margin"><rs type="person">Caietanus</rs> satis benignus <rs type="person">Lutherii</rs> paedagogus <rs type="place">Augustae</rs>.<note type="crit_app"> <hi style="font-style: italic;">fehlt B, C</hi></note></note><lb/>stae</rs></p>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="hi">
+			<x:context>
+				<note type="footnote" xml:id="n2">Wortes <hi style="font-style: italic;">l</hi><hi style="font-style: italic;">ucus</hi> (Wald)</note>
+			</x:context>
+			<x:expect label="nur ein einziges Ping">
+				<note type="footnote" xml:id="n2">Wortes <hi style="font-style: italic;">lucus</hi> (Wald)</note>
+			</x:expect>
+		</x:scenario>
+		<x:scenario label="T1.8: hi mit Leerzeichen dazwischen">
+			<x:context xml:space="preserve">
+				<note type="crit_app"> <hi style="font-style: italic;">hinzugefügt</hi> <hi style="font-style: italic;">am Rand</hi></note>
+			</x:context>
+			<x:expect label="Leerzeichen in der Mitte" xml:space="preserve">
+				<note type="crit_app">hinzugefügt am Rand</note>
+			</x:expect>
+		</x:scenario>
 	</x:scenario>
 	
-	<x:scenario label="Ersetzungen">
-		<x:scenario label="Expansionen">
+	<x:scenario label="rdg">
+		<x:scenario label="... mit kommentar">
+			<x:context>
+				<note type="crit_app"> er <hi style="font-style: italic;">B</hi><hi
+					style="font-style: italic;">;</hi> ex <hi style="font-style: italic;">C </hi><note type="comment">mit hsl.
+						Korrektur </note><note type="comment"><orig>et</orig></note></note>
+			</x:context>
+			<x:expect label="zusammengezogen" xml:space="preserve"><note type="crit_app"> <orig>er</orig> B; <orig>ex</orig> C <note type="comment">mit hsl.
+						Korrektur <orig>et</orig></note></note></x:expect>
+		</x:scenario>
+		<x:scenario label="... mit mehreren Kommentaren">
+			<x:context>
+				<span type="crit_app" from="#s2" to="#s2e"> 
+					<hi style="font-style: italic;">A</hi>
+					<hi style="font-style: italic;">
+						<hi rend="sub">1-4</hi>
+					</hi>
+					<hi style="font-style: italic;">;</hi> XXvii die Junii hora secunda 1519 <hi style="font-style: italic;">A</hi>
+					<hi style="font-style: italic;">
+						<hi rend="sub">5</hi>
+					</hi>
+					<hi style="font-style: italic;">;</hi>
+					<hi style="font-style: italic;"> </hi>Egregius Doctor carolstadius<hi style="font-style: italic;"> a</hi>
+					<hi style="font-style: italic;">
+						<hi rend="sub">1</hi>
+					</hi>
+					<hi style="font-style: italic;">;</hi> Anno 1519<hi style="font-style: italic;"> </hi>
+					<hi style="font-style: italic;">hinzugefügt </hi>
+					<hi style="font-style: italic;">a</hi>
+					<hi style="font-style: italic;">
+						<hi rend="sub">3</hi>
+					</hi>
+					<hi style="font-style: italic;">;</hi>
+					<hi style="font-style: italic;"> </hi>27 die Juni&lt;i&gt;<hi style="font-style: italic;"> </hi>
+					<hi style="font-style: italic;">a</hi>
+					<hi style="font-style: italic;">
+						<hi rend="sub">3</hi>
+					</hi>
+					<hi style="font-style: italic;"> </hi>
+					<note type="comment">AuRd-Gl</note>
+					<hi style="font-style: italic;">;</hi> hora s&lt;ecunda&gt; <hi style="font-style: italic;">a</hi>
+					<hi style="font-style: italic;">
+						<hi rend="sub">2</hi>
+					</hi>
+					<hi style="font-style: italic;"> </hi>
+					<note type="comment">AuRd-Gl</note>
+				</span>
+			</x:context>
+			<x:expect label="je einmal AuRd-Gl" xml:space="preserve"><span type="crit_app" from="#s2" to="#s2e">A<hi
+				rend="sub">1-4</hi>; <orig>XXvii die Junii hora secunda 1519</orig> A<hi rend="sub">5</hi>;  <orig
+					>Egregius Doctor carolstadius</orig> a<hi rend="sub">1</hi>; <orig>Anno 1519</orig> hinzugefügt a<hi
+					rend="sub">3</hi>;  <orig>27 die Juni&lt;i&gt;</orig> a<hi rend="sub">3</hi> <note
+						type="comment">AuRd-Gl</note>; <orig>hora s&lt;ecunda&gt;</orig> a<hi rend="sub">2</hi> <note
+						type="comment">AuRd-Gl</note></span></x:expect>
+		</x:scenario>
+	</x:scenario>
+	
+	<x:scenario label="T3: Text">
+		<x:scenario label="T3.1: Spatium vor Marginalie">
 			<x:context>
 				<p>
-					<lb/>Durchleuchtigster Hochgebornner Churfurst. euern churf'urstlich' g'naden'
+					<lb/>seinem abgehen oder abstehen befihlet. Christus/ der <note place="margin">Johan. ii.</note>
+					<lb/>auch zu einem zeychen (solcher bedechtickeit) zu
 				</p>
 			</x:context>
-			<x:expect label="ex">
+			<x:expect label="ohne">
 				<p>
-					<lb/>Durchleuchtigster Hochgebornner Churfurst. euern churf<ex>urstlich</ex> g<ex>naden</ex>
+					<lb/>seinem abgehen oder abstehen befihlet. Christus/ der<note place="margin">Johan. ii.</note>
+					<lb/>auch zu einem zeychen (solcher bedechtickeit) zu
 				</p>
 			</x:expect>
 		</x:scenario>
 	</x:scenario>
-
-	<x:scenario label="rdg mit kommentar">
-		<x:context>
-			<note type="crit_app"> er <hi style="font-style: italic;">B</hi><hi
-				style="font-style: italic;">;</hi> ex <hi style="font-style: italic;">C </hi><note type="comment">mit hsl.
-					Korrektur </note><note type="comment"><orig>et</orig></note></note>
-		</x:context>
-		<x:expect label="zusammengezogen">
-			<note type="crit_app">
-				<orig> er </orig>B;<orig> ex </orig>C <note type="comment">mit hsl.
-					Korrektur <orig>et</orig></note></note>
-		</x:expect>
+	
+	<x:scenario label="T4: Standard umsetzen">
+		<x:scenario label="T4.1: hi">
+			<x:context>
+				<note type="footnote">auch C3<hi rend="super">v</hi> Karlstadts</note>
+			</x:context>
+			<x:expect label=".">
+				<note type="footnote">auch C3<hi rend="super">v</hi> Karlstadts</note>
+			</x:expect>
+		</x:scenario>
 	</x:scenario>
 </x:description>
